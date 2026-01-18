@@ -1,0 +1,31 @@
+export default function Footer() {
+  return (
+    <div className="">
+      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm max-w-7xl mx-auto">
+        {/* ------------ Left Section ------------ */}
+        <div className="text-left sm:pl-5">
+          <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
+          <ul className="flex flex-col gap-2">
+            <li>
+              Call:{" "}
+              <a href="tel:+18888881403" className="text-orange-600">
+                (888) 888-1403
+              </a>
+            </li>
+            <li>
+              Email:{" "}
+              <span className="text-orange-600">cs@lotsplumbing.com</span>
+            </li>
+            <li>
+              Address:{" "}
+              <span className="text-orange-600">
+                {" "}
+                4060 N. Palm Street, Suite 606 Fullerton, CA 92835
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}

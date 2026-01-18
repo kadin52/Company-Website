@@ -1,6 +1,10 @@
-import Home from "@/pages/home";
+import Home from "../pages/Home";
 import Image from "next/image";
 
 export default function App() {
-  return <Home />;
+  return (
+    <>
+      <Home />
+    </>
+  );
 }
