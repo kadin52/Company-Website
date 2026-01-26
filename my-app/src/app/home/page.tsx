@@ -1,6 +1,6 @@
 import Head from "next/head";
-import SimpleSlider from "../components/SimpleSlider";
-import Card from "../components/Card";
+import SimpleSlider from "../../components/SimpleSlider";
+import Card from "../../components/Card";
 export default function Home() {
   return (
     <>

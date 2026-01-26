@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="">
-      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm max-w-7xl mx-auto">
+    <div className="bg-gray-300">
+      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 mt-40 text-sm max-w-7xl mx-auto py-10 inset-x-0 bottom-0">
         {/* ------------ Left Section ------------ */}
         <div className="text-left sm:pl-5">
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>

@@ -20,6 +20,7 @@ export default function Card({
             src={imageUrl}
             alt={title}
             fill
+            unoptimized={true}
             className="object-contain object-cover p-1"
           ></Image>
         </div>

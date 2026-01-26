@@ -17,36 +17,39 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const logoSize = shrink
+    ? { width: 120, height: 120 }
+    : { width: 200, height: 200 };
   return (
-    <header className="bg-white border-b">
-      <div className="container relative fixed mx-auto flex items-center justify-between">
+    <div className="fixed bg-white border-b inset-x-0 top-0 z-50">
+      <header className="container relative mx-auto flex items-center justify-between z-50 max-w-7xl overflow-visible">
         <div
-          className={`relative items-start justify-start mr-auto ${
-            shrink ? "h-10 w-36" : "h-30 w-48"
-          } transition-all duration-300`}
+          className="absolute mr-auto top-0 border-amber-500 border-10 ease-in-out duration-300"
+          style={{ width: logoSize.width, height: logoSize.height }}
         >
-          <Link href="/">
+          <Link href="/" className="block w-full h-full relative">
             <Image
               src="/assets/logo.png"
               alt="Logo"
               fill
               className="object-contain"
+              quality={100}
+              unoptimized={true}
             ></Image>
           </Link>
         </div>
-
-        <nav className="flex ml-auto justify-end text-black text-nowrap text-lg font-medium">
+        <nav className="flex ml-auto justify-end items-center text-gray-700 text-nowrap text-md font-bold">
           <div className="group">
             <Link
               href="/services"
-              className="inline-flex px-5 py-10 group-hover:bg-orange-500"
+              className="inline-flex px-5 py-10 group-hover:bg-orange-600 group-hover:text-white"
             >
               Services
               <span className="transition-transform group-hover:rotate-180">
                 ▾
               </span>
             </Link>
-            <div className="absolute opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+            <div className="absolute opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 ">
               <Link href="/services#repipe">Copper & PEX Repipe</Link>
               <Link href="/#water-heater">Water Heater Installation</Link>
               <Link href="/#gas">Gas Line Installation & Repair</Link>
@@ -54,19 +57,24 @@ export default function Navbar() {
               <Link href="/#=fixture">Water Heater Installation</Link>
             </div>
           </div>
-
-          <Link href="/company" className="px-5 py-10 hover:bg-orange-500">
+          <Link
+            href="/company"
+            className="px-5 py-10 hover:text-white hover:bg-orange-600"
+          >
             Company
           </Link>
-          <Link href="/contact" className="px-5 py-10 hover:bg-orange-500">
+          <Link
+            href="/contact"
+            className="px-5 py-10 hover:text-white  hover:bg-orange-600"
+          >
             Contact Us
           </Link>
-          <span className="text-orange-600 px-5 py-10">
+          <span className="text-orange-600 text-2xl px-5 py-8 font-bold">
             {" "}
             Call (888) 888-1403
           </span>
         </nav>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
