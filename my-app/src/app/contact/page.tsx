@@ -1,6 +1,47 @@
+"use client";
 import Image from "next/image";
-
+import { useState } from "react";
 export default function Contact() {
+  const [status, setStatus] = useState("idle");
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const message = e.target.message.value;
+
+    const formData = {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message,
+      _subject: "Contact Form Submission",
+    };
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/90d0d8fc830e7e9d0a503ae1d359cda2",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+
+      if (response.ok) {
+        setStatus("success");
+        e.target.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  }
+
   return (
     <>
       <section className="relative w-full h-[220px] z-10 mb-20">
@@ -26,10 +67,10 @@ export default function Contact() {
           888-1403 .
         </p>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">
-              <InputInfo name="full-name" type="text" placeholder="Your Name" />
+              <InputInfo name="name" type="text" placeholder="Your Name" />
               <InputInfo
                 name="email"
                 type="email"
@@ -38,7 +79,26 @@ export default function Contact() {
                 pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
               />
               <InputInfo name="phone" type="tel" placeholder="Phone Number" />
-              <InputInfo name="message" type="text" placeholder="Message" />
+
+              <div className="mt-2 group">
+                <div className="flex rounded-md pl-3   outline-1 -outline-offset-2 outline-gray-400 ">
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Message"
+                    className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6 items-start field-sizing h-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="mt-6">
+                <button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className="rounded-none bg-orange-600 text-white p-4"
+                >
+                  {status === "submitting" ? "Sending..." : "Send Email"}
+                </button>
+              </div>
             </div>
           </div>
         </form>
@@ -62,7 +122,7 @@ function InputInfo({
 }) {
   return (
     <div className="mt-2 group">
-      <div className="flex items-center rounded-md bg-white/5 pl-3   outline-1 -outline-offset-2 outline-gray-400">
+      <div className="flex items-center rounded-md pl-3   outline-1 -outline-offset-2 outline-gray-400">
         <input
           id={name}
           name={name}

@@ -19,12 +19,12 @@ export default function Navbar() {
 
   const logoSize = shrink
     ? { width: 100, height: 100 }
-    : { width: 200, height: 200 };
+    : { width: 150, height: 150 };
   return (
     <div className="fixed bg-white border-b inset-x-0 top-0 z-50">
       <header className="container relative mx-auto flex items-stretch justify-between z-50 max-w-7xl overflow-visible">
         <div
-          className="absolute mr-auto top-0 border-amber-500 border-10 ease-in-out duration-300"
+          className="absolute mr-auto top-0 ease-in-out duration-300"
           style={{ width: logoSize.width, height: logoSize.height }}
         >
           <Link href="/" className="block w-full h-full relative">
