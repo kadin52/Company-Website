@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Sidebar from "../../components/Sidebar";
 export default function Services() {
   return (
     <>
+      <Sidebar />
       <section className="relative w-full h-[220px] z-10 mb-20">
         <Image
           src="/assets/custom-header-services-up.jpg"

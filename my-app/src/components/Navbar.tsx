@@ -19,7 +19,7 @@ export default function Navbar() {
 
   const logoSize = shrink
     ? { width: 100, height: 100 }
-    : { width: 150, height: 150 };
+    : { width: 170, height: 170 };
   return (
     <div className="fixed bg-white border-b inset-x-0 top-0 z-50">
       <header className="container relative mx-auto flex items-stretch justify-between z-50 max-w-7xl overflow-visible">
