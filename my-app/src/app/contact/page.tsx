@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 export default function Contact() {
   const [status, setStatus] = useState("idle");
+  const [success, setSuccess] = useState(false);
   async function handleSubmit(e: any) {
     e.preventDefault();
     setStatus("submitting");
@@ -35,6 +36,7 @@ export default function Contact() {
 
       if (response.ok) {
         setStatus("success");
+        setSuccess(true);
         e.target.reset();
       }
     } catch (error) {
@@ -46,7 +48,7 @@ export default function Contact() {
     <>
       <section className="relative w-full h-[220px] z-10 mb-20">
         <Image
-          src="/assets/custom-header-contact.jpg"
+          src="/assets/custom-header-contact-up.jpg"
           alt="Services Header"
           fill
           sizes="100vw"
@@ -99,6 +101,7 @@ export default function Contact() {
                   {status === "submitting" ? "Sending..." : "Send Email"}
                 </button>
               </div>
+              <div>{success}</div>
             </div>
           </div>
         </form>

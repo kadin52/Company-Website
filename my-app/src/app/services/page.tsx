@@ -4,7 +4,7 @@ export default function Services() {
     <>
       <section className="relative w-full h-[220px] z-10 mb-20">
         <Image
-          src="/assets/custom-header-services.jpg"
+          src="/assets/custom-header-services-up.jpg"
           alt="Services Header"
           fill
           className="object-cover object-top"
