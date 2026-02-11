@@ -1,11 +1,23 @@
 import Link from "next/link";
-export default function Sidebar() {
+type SidebarProps = {
+  items: string[];
+};
+export default function Sidebar({ items = [] }: SidebarProps) {
   return (
     <>
-      <div className="sticky bg-white left-0 z-40">
-        <div className="relative justify-left ">
-          <Link href="/">Exampple</Link>
-        </div>
+      <div className="bg-white sticky left-0 top-40 z-40 ">
+        <ul className="relative justify-left text-nowrap ">
+          {items.map((id) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="text-gray-600 hover:text-orange-600"
+              >
+                {id}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
