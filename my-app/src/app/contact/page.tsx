@@ -60,7 +60,7 @@ export default function Contact() {
           </h1>
         </div>
       </section>
-      <div className="max-w-7xl mx-auto justify-center">
+      <div className="max-w-7xl mx-auto justify-center px-10 2xl:px-0">
         <h2 className="text-light text-4xl font-light">
           Request for Information
         </h2>

@@ -17,9 +17,9 @@ export default function Services() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto justify-center">
-        <div className="flex gap-10">
-          <aside className="sticky top-40">
+      <div className="max-w-7xl mx-auto justify-center p-10">
+        <div className="flex flex-col lg:flex-row gap-10">
+          <aside className="">
             <Sidebar
               items={[
                 "Copper & PEX Repipe",
@@ -30,7 +30,7 @@ export default function Services() {
               ]}
             />
           </aside>
-          <div className="flex flex-col">
+          <div className="flex-1 flex flex-col flex-wrap">
             <div className="text-left  text-xl font-light text-gray-600">
               <p>
                 At Lots Plumbing, we provide a focused array of repiping
@@ -42,7 +42,7 @@ export default function Services() {
               </p>
             </div>
             <section id="Copper & PEX Repipe" className="text-gray-600">
-              <h2 className="font-bold text-3xl mb-15 mt-15">
+              <h2 className="font-bold text-3xl mb-10 mt-15">
                 Copper & PEX Repipe
               </h2>
               <p className="text-gray-600 ">
@@ -61,7 +61,7 @@ export default function Services() {
                 It's time to think about repiping your home or business if you
                 are seeing the following signs:
               </p>
-              <ul className="list-disc ml-15 space-y-1">
+              <ul className="list-disc ml-15 space-y-1 mt-3">
                 <li>Water running even when no faucets are on?</li>
                 <li>
                   Water meter showing water running when water is turned off?
@@ -88,6 +88,104 @@ export default function Services() {
                   secured
                 </li>
                 <li>Increased property value</li>
+              </ul>
+            </section>
+            <section id="Copper & PEX Repipe" className="text-gray-600">
+              <h2 className="font-bold text-3xl mb-10 mt-15">
+                Water Heater Installation
+              </h2>
+              <p className="text-xl font-light text-gray-600 mt-8">
+                Lots Plumbing provides our clients with the most professional
+                installation and repair for water heaters and tankless water
+                heaters of all makes and models. Our team is highly experienced;
+                we have replace countless water heaters in residential and
+                commercial facilities throughout the Southland.
+              </p>
+              <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
+                How do you know if your Water Heater needs to be replaced?
+              </h3>
+              <p>Some of the signs include the following:</p>
+              <ul className="list-disc ml-15 space-y-1 mt-3">
+                <li>Consistently lukewarm or cold water</li>
+                <li>Fluctuating water temperatures</li>
+                <li>Water that is far too hot</li>
+                <li>Visible signs of water tank rust or corrosion</li>
+                <li>Pool of water surrounding water heater</li>
+                <li>Deteriorated anode rod</li>
+                <li>Sediment build-up due to lack of system-wide flushing</li>
+                <li>Rushed installation</li>
+                <li>Improperly sized for specific location</li>
+                <li>Over-capacity</li>
+              </ul>
+              <p className="mt-3">
+                At Lots Plumbing, we also offer Tankless Water Heater
+                Installation. Contact us and our specialists will visit your
+                property, assess your needs and the condition of your water
+                heater and provide you with the best price estimation.
+              </p>
+            </section>
+            <section id="Copper & PEX Repipe" className="text-gray-600">
+              <h2 className="font-bold text-3xl mb-10 mt-15">
+                Gas Line Installation and Repair
+              </h2>
+              <p className="text-xl font-light text-gray-600 mt-8">
+                Do you have a sulfur-like odor in your home?Sulfur is added to
+                natural gas to let you know when{" "}
+                <span className="text-orange-600">
+                  Then you already have an emergency!
+                </span>{" "}
+                there is a leak in your gas pipes. If you can smell the sulfur,
+                you’re already in trouble.
+              </p>
+              <p className="mt-5">
+                Gas lines can fail for a number of reasons including worn out
+                materials, something falling on the pipe, plant or tree roots
+                growing into the pipe, or environmental collapses. Gas line
+                installation and repair is not a do-it-yourself kind of project.
+                You should always call a professional because this can be
+                dangerous work. Older homes often have black steel pipes. When
+                these pipes fail, the entire gas line needs to be repaired or
+                replaced. More modern approaches use polyethylene pipes for gas
+                main underground which last a long time and can be replaced in
+                segments.
+              </p>
+            </section>
+            <section id="Copper & PEX Repipe" className="text-gray-600">
+              <h2 className="font-bold text-3xl mb-10 mt-15">Unclog Drain </h2>
+              <p className="text-xl font-light text-gray-600 mt-8">
+                Do you have a clogged drain that home remedies or Drain-O just
+                won’t fix? A blocked drain is definitely an incovenience that
+                can lead to a waterlogged disaster in your home or business.
+                Take action immediately -{" "}
+                <span className="text-orange-600">
+                  Call Lots Plumbing immediately! We are a licensed and insured
+                  plumber with excellent customer reviews on YELP!{" "}
+                </span>{" "}
+              </p>
+            </section>
+            <section id="Copper & PEX Repipe" className="text-gray-600">
+              <h2 className="font-bold text-3xl mb-10 mt-15">
+                Fixture Replacement and Installation
+              </h2>
+              <p className="text-xl font-light text-gray-600 mt-8">
+                Planning the home renovation is the fun part. Actually having
+                your house torn up and getting the fixtures installed is the
+                not-so-fun part. Let Lots Plumbing make it better with our
+                fixture installation service.
+              </p>
+              <p className="mt-5">
+                Our fixture replacement & installation services include the
+                following. We remove and disgard your old fixtures and replace
+                them with your newly selected device.
+              </p>
+              <ul className="list-disc ml-15 space-y-1 mt-3">
+                <li>Sinks (kitchen, bathrooms, utilities, etc.)</li>
+                <li>Faucets</li>
+                <li>Bathtubs</li>
+                <li>Showers</li>
+                <li>Toilets or Urinals</li>
+                <li>Garbage Disposals</li>
+                <li>Water Filters & Softeners</li>
               </ul>
             </section>
           </div>
