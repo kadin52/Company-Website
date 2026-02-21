@@ -21,6 +21,7 @@ export default function Services() {
         <div className="flex flex-col lg:flex-row gap-10">
           <aside className="">
             <Sidebar
+              title="Our Services"
               items={[
                 "Copper & PEX Repipe",
                 "Water Heater Installation",
@@ -35,10 +36,10 @@ export default function Services() {
               <p>
                 At Lots Plumbing, we provide a focused array of repiping
                 services to help you solve your plumbing problems.{" "}
-                <p className="text-orange-600 font-bold">
+                <span className="text-orange-600 font-bold">
                   We are proud of our 5-star reputation on Yelp because we aim
                   to give every customer 5-star service.
-                </p>
+                </span>
               </p>
             </div>
             <section id="Copper & PEX Repipe" className="text-gray-600">
