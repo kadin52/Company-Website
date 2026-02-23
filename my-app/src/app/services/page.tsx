@@ -44,7 +44,7 @@ export default function Services() {
                 </span>
               </p>
             </div>
-            <div className="flex justify-center mx-auto w-full border-10 border-gray-300 max-w-3xl my-8">
+            <div className="flex justify-center mx-auto w-full border-10 border-gray-300 max-w-2xl my-8 bg-gray-300">
               <YelpEmbed reviewId="qGl8N0okgZwYgk9X7mgEuw" />
             </div>
             <section id="Copper & PEX Repipe" className="text-gray-600">
@@ -63,21 +63,34 @@ export default function Services() {
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 How do you know if your home or business need repiping?
               </h3>
-              <p>
-                It's time to think about repiping your home or business if you
-                are seeing the following signs:
-              </p>
-              <ul className="list-disc ml-15 space-y-1 mt-3">
-                <li>Water running even when no faucets are on?</li>
-                <li>
-                  Water meter showing water running when water is turned off?
-                </li>
-                <li>Unusual high water bills?</li>
-              </ul>
-              <p className="text-xl font-light text-gray-600 mt-8">
-                Lots Plumbing can help! We offer both copper and PEX repiping
-                options. We are fast, reliable and very cost-friendly!
-              </p>
+              <div className="flex flex-row gap-8">
+                <div className="max-w-xl">
+                  <p>
+                    It's time to think about repiping your home or business if
+                    you are seeing the following signs:
+                  </p>
+                  <ul className="list-disc ml-15 space-y-1 mt-3">
+                    <li>Water running even when no faucets are on?</li>
+                    <li>
+                      Water meter showing water running when water is turned
+                      off?
+                    </li>
+                    <li>Unusual high water bills?</li>
+                  </ul>
+                  <p className="text-xl font-light text-gray-600 mt-8">
+                    Lots Plumbing can help! We offer both copper and PEX
+                    repiping options. We are fast, reliable and very
+                    cost-friendly!
+                  </p>
+                </div>
+                <Image
+                  src="/assets/pex-repipe.jpg"
+                  alt="Pex"
+                  width={700}
+                  height={700}
+                />
+              </div>
+
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 Experience the Benefits of Repiping{" "}
               </h3>
