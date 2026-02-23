@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Sidebar from "../../components/Sidebar";
+
+import YelpEmbed from "../../components/YelpEmbed";
 export default function Services() {
   return (
     <>
@@ -41,6 +43,9 @@ export default function Services() {
                   to give every customer 5-star service.
                 </span>
               </p>
+            </div>
+            <div className="flex justify-center mx-auto w-full border-10 border-gray-300 max-w-3xl my-8">
+              <YelpEmbed reviewId="qGl8N0okgZwYgk9X7mgEuw" />
             </div>
             <section id="Copper & PEX Repipe" className="text-gray-600">
               <h2 className="font-bold text-3xl mb-10 mt-15">

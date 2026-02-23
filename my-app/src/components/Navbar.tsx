@@ -38,7 +38,7 @@ export default function Navbar() {
             ></Image>
           </Link>
         </div>
-        <nav className="flex ml-auto justify-end items-stretch text-gray-700 text-nowrap text-md font-bold">
+        <nav className="flex ml-auto justify-end items-stretch text-gray-700 text-nowrap text-sm font-bold">
           <div className="group flex items-stretch relative">
             <Link
               href="/services"
