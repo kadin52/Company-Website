@@ -10,7 +10,7 @@ export default function Services() {
           src="/assets/custom-header-services-up.jpg"
           alt="Services Header"
           fill
-          className="object-cover object-top"
+          className="object-cover object-middle"
         />
         <div className="relative h-full max-w-7xl mx-auto my-auto z-20 ">
           <h1 className="absolute bottom-4 right-4 text-4xl text-orange-600 font-light">

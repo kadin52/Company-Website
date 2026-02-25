@@ -49,13 +49,13 @@ export default function Navbar() {
                 ▾
               </span>
             </Link>
-            <div className="absolute opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 ">
+            {/* <div className="absolute opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 ">
               <Link href="/services#repipe">Copper & PEX Repipe</Link>
               <Link href="/#water-heater">Water Heater Installation</Link>
               <Link href="/#gas">Gas Line Installation & Repair</Link>
               <Link href="/#unclog-drain">Unclog Drain</Link>
               <Link href="/#=fixture">Water Heater Installation</Link>
-            </div>
+            </div> */}
           </div>
           <Link
             href="/company"

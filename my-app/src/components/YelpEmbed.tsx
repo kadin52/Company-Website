@@ -10,7 +10,7 @@ export default function YelpEmbed({ reviewId }) {
           data-hostname="www.yelp.com"
           data-review-id={reviewId}
         >
-          Read the review on Yelp
+          Refresh to load Yelp review.
         </span>
         <Script
           src="https://www.yelp.com/embed/widgets.js"
