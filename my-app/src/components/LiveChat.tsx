@@ -14,12 +14,23 @@ export default function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
   const [newMessage, setNewMessage] = useState("");
-
+  const [sessionId, setSessionId] = useState("");
   // Listen to the database in real-time
   useEffect(() => {
-    if (!isOpen) return; // Only listen when chat is open to save reads
+    let currentSession = localStorage.getItem("chat_session_id");
+    if (!currentSession) {
+      currentSession = Math.random().toString(36);
+      localStorage.setItem("chat_session_id", currentSession);
+    }
+    setSessionId(currentSession);
+  }, []);
 
-    const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
+  useEffect(() => {
+    if (!isOpen || !sessionId) return;
+    const q = query(
+      collection(db, "chats", sessionId, "messages"),
+      orderBy("createdAt", "asc"),
+    );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedMessages = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -29,17 +40,17 @@ export default function LiveChat() {
     });
 
     return () => unsubscribe();
-  }, [isOpen]);
+  }, [isOpen, sessionId]);
 
   // Send a message to the database
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newMessage.trim() === "") return;
 
-    await addDoc(collection(db, "messages"), {
+    await addDoc(collection(db, "chats", sessionId, "messages"), {
       text: newMessage,
       createdAt: serverTimestamp(),
-      user: "Customer", // Hardcoded for now
+      user: "Customer",
     });
 
     setNewMessage("");
