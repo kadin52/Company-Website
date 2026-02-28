@@ -15,13 +15,15 @@ export default function Card({
   return (
     <>
       <div className="flex-col relative ">
-        <div className="border-2 border-gray-300 h-75 w-lg overflow-hidden relative mb-8">
+        <div className="border-2 border-gray-300 w-lg overflow-hidden relative mb-8">
           <Image
             src={imageUrl}
             alt={title}
-            fill
+            width={800}
+            height={600}
+            quality={100}
             unoptimized={true}
-            className="object-contain object-cover p-1"
+            className="object-contain p-1"
           ></Image>
         </div>
         <div className="p-4 border-2 border-gray-300 relative max-w-lg mb-8 text-center text-xl font-light">

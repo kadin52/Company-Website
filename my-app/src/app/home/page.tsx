@@ -64,8 +64,8 @@ export default function Home() {
         ></Card>
         <Card
           imageUrl="/assets/copper-pex.jpg"
-          learnMoreUrl="/services"
-          title="Copper & PEX Repipes"
+          learnMoreUrl="/services#Copper & PEX Repipe"
+          title="Copper & PEX Repipe"
           description="Our team of repipe specialists have nearly two decades of experience in Copper and PEX Repiping. Lots Plumbing has successfully replaced and installed many Copper and PEX repipe projects for residential and commercial structures in Southern California."
         ></Card>
       </section>
