@@ -4,6 +4,8 @@ import { db } from "../lib/firebase";
 import {
   collection,
   addDoc,
+  doc,
+  setDoc,
   onSnapshot,
   query,
   orderBy,
@@ -29,6 +31,10 @@ export default function LiveChat() {
     }
     setSessionId(currentSession);
     setIsMounted(true);
+
+    const registerSession = async () => {
+      await setDoc(doc(db, "chats", currentSession), { merge: true });
+    };
   }, []);
 
   useEffect(() => {
