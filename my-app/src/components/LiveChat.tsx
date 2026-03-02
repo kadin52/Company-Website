@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { db } from "../lib/firebase";
 import {
   collection,
@@ -18,6 +18,8 @@ export default function LiveChat() {
   const [sessionId, setSessionId] = useState("");
 
   const [isMounted, setIsMounted] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   // Listen to the database in real-time
   useEffect(() => {
     let currentSession = localStorage.getItem("chat_session_id");
@@ -46,6 +48,10 @@ export default function LiveChat() {
     return () => unsubscribe();
   }, [isOpen, sessionId]);
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages]);
+
   // Send a message to the database
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +64,10 @@ export default function LiveChat() {
     });
 
     setNewMessage("");
+  };
+
+  const scrollToBottom = () => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   return (
@@ -78,9 +88,12 @@ export default function LiveChat() {
           dragAxis="both"
           dragHandleClassName="chat-header"
         >
-          <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-xl flex flex-col mb-4 overflow-hidden">
+          <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-2xl flex flex-col mb-4 overflow-hidden">
             <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
-              <span>Lots Plumbing Support</span>
+              <span>
+                Lots Plumbing Support{" "}
+                <span className="text-gray-600 text-xs ">{`(resizable)`} </span>
+              </span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:text-gray-200"
@@ -105,6 +118,7 @@ export default function LiveChat() {
                   {msg.text}
                 </div>
               ))}
+              <div ref={scrollRef} />
             </div>
             <form
               onSubmit={sendMessage}
