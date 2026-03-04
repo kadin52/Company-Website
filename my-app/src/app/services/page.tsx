@@ -63,7 +63,7 @@ export default function Services() {
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 How do you know if your home or business need repiping?
               </h3>
-              <div className="flex flex-row gap-8">
+              <div className="flex flex-col sm:flex-row gap-8">
                 <div className="max-w-xl">
                   <p>
                     It's time to think about repiping your home or business if
@@ -109,7 +109,7 @@ export default function Services() {
                 <li>Increased property value</li>
               </ul>
             </section>
-            <section id="Copper & PEX Repipe" className="text-gray-600">
+            <section id="Water Heater Installation" className="text-gray-600">
               <h2 className="font-bold text-3xl mb-10 mt-15">
                 Water Heater Installation
               </h2>
@@ -123,19 +123,33 @@ export default function Services() {
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 How do you know if your Water Heater needs to be replaced?
               </h3>
-              <p>Some of the signs include the following:</p>
-              <ul className="list-disc ml-15 space-y-1 mt-3">
-                <li>Consistently lukewarm or cold water</li>
-                <li>Fluctuating water temperatures</li>
-                <li>Water that is far too hot</li>
-                <li>Visible signs of water tank rust or corrosion</li>
-                <li>Pool of water surrounding water heater</li>
-                <li>Deteriorated anode rod</li>
-                <li>Sediment build-up due to lack of system-wide flushing</li>
-                <li>Rushed installation</li>
-                <li>Improperly sized for specific location</li>
-                <li>Over-capacity</li>
-              </ul>
+
+              <div className="flex flex-col sm:flex-row gap-8">
+                <div>
+                  <p>Some of the signs include the following:</p>
+                  <ul className="list-disc ml-15 space-y-1 mt-3">
+                    <li>Consistently lukewarm or cold water</li>
+                    <li>Fluctuating water temperatures</li>
+                    <li>Water that is far too hot</li>
+                    <li>Visible signs of water tank rust or corrosion</li>
+                    <li>Pool of water surrounding water heater</li>
+                    <li>Deteriorated anode rod</li>
+                    <li>
+                      Sediment build-up due to lack of system-wide flushing
+                    </li>
+                    <li>Rushed installation</li>
+                    <li>Improperly sized for specific location</li>
+                    <li>Over-capacity</li>
+                  </ul>
+                </div>
+                <Image
+                  src="/assets/water-heater-installation.jpg"
+                  alt="Water Heater Installation"
+                  width={450}
+                  height={450}
+                  className="object-contain"
+                />
+              </div>
               <p className="mt-3">
                 At Lots Plumbing, we also offer Tankless Water Heater
                 Installation. Contact us and our specialists will visit your
@@ -143,12 +157,15 @@ export default function Services() {
                 heater and provide you with the best price estimation.
               </p>
             </section>
-            <section id="Copper & PEX Repipe" className="text-gray-600">
+            <section
+              id="Gas Line Installation & Repair"
+              className="text-gray-600"
+            >
               <h2 className="font-bold text-3xl mb-10 mt-15">
                 Gas Line Installation and Repair
               </h2>
               <p className="text-xl font-light text-gray-600 mt-8">
-                Do you have a sulfur-like odor in your home?Sulfur is added to
+                Do you have a sulfur-like odor in your home? Sulfur is added to
                 natural gas to let you know when{" "}
                 <span className="text-orange-600">
                   Then you already have an emergency!
