@@ -2,6 +2,18 @@ import Image from "next/image";
 import Sidebar from "../../components/Sidebar";
 
 import YelpEmbed from "../../components/YelpEmbed";
+
+const quoteButton = (
+  <>
+    <a
+      href="/contact"
+      className="text-white bg-orange-600 hover:bg-orange-300 text-lg font-light p-4 text-center"
+    >
+      Request a Quote
+    </a>
+  </>
+);
+
 export default function Services() {
   return (
     <>
@@ -63,7 +75,7 @@ export default function Services() {
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 How do you know if your home or business need repiping?
               </h3>
-              <div className="flex flex-col sm:flex-row gap-8">
+              <div className="flex flex-col sm:flex-row gap-8 justify-start">
                 <div className="max-w-xl">
                   <p>
                     It's time to think about repiping your home or business if
@@ -83,12 +95,16 @@ export default function Services() {
                     cost-friendly!
                   </p>
                 </div>
-                <Image
-                  src="/assets/pex-repipe.jpg"
-                  alt="Pex"
-                  width={700}
-                  height={700}
-                />
+                <div className="flex flex-col gap-4 items-center">
+                  <Image
+                    src="/assets/pex-repipe.jpg"
+                    alt="Pex"
+                    width={800}
+                    height={800}
+                    className="object-contain"
+                  />
+                  {quoteButton}
+                </div>
               </div>
 
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
@@ -124,7 +140,7 @@ export default function Services() {
                 How do you know if your Water Heater needs to be replaced?
               </h3>
 
-              <div className="flex flex-col sm:flex-row gap-8">
+              <div className="flex flex-col sm:flex-row gap-8 justify-start">
                 <div>
                   <p>Some of the signs include the following:</p>
                   <ul className="list-disc ml-15 space-y-1 mt-3">
@@ -142,13 +158,17 @@ export default function Services() {
                     <li>Over-capacity</li>
                   </ul>
                 </div>
-                <Image
-                  src="/assets/water-heater-installation.jpg"
-                  alt="Water Heater Installation"
-                  width={450}
-                  height={450}
-                  className="object-contain"
-                />
+
+                <div className="flex flex-col gap-4 items-center">
+                  <Image
+                    src="/assets/water-heater-installation.jpg"
+                    alt="Water Heater Installation"
+                    width={450}
+                    height={450}
+                    className="object-contain"
+                  />
+                  {quoteButton}
+                </div>
               </div>
               <p className="mt-3">
                 At Lots Plumbing, we also offer Tankless Water Heater
