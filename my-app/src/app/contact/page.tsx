@@ -81,7 +81,9 @@ export default function Contact() {
                 pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
               />
               <InputInfo name="phone" type="tel" placeholder="Phone Number" />
-
+              <p className="mt-2 ml-4 text-sm text-gray-500">
+                We will only use this phone number to respond to this inquiry.
+              </p>
               <div className="mt-2 group">
                 <div className="flex rounded-md pl-3   outline-1 -outline-offset-2 outline-gray-400 ">
                   <textarea
