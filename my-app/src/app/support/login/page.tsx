@@ -44,9 +44,6 @@ export default function SuportLogin() {
           <h2 className="font-bold text-2xl text-[#4527a5] text-center">
             Login
           </h2>
-          <p className="text-sm mt-7 text-[#6c57b1] text-opacity-70 text-center">
-            If you already a member, easily log in
-          </p>
 
           <form className="flex flex-col gap-4" action="">
             <input
