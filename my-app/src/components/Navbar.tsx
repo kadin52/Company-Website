@@ -41,7 +41,7 @@ export default function Navbar() {
         <nav className="flex ml-auto justify-end items-stretch text-gray-700 text-nowrap text-sm font-bold">
           <div className="group flex items-stretch relative">
             <Link
-              href="/services"
+              href="/customer/services"
               className="flex px-5 items-center group-hover:bg-orange-600 group-hover:text-white"
             >
               Services
@@ -58,13 +58,13 @@ export default function Navbar() {
             </div> */}
           </div>
           <Link
-            href="/company"
+            href="/customer/company"
             className="flex px-5 items-center hover:text-white hover:bg-orange-600"
           >
             Company
           </Link>
           <Link
-            href="/contact"
+            href="/customer/contact"
             className="flex px-5 items-center hover:text-white  hover:bg-orange-600"
           >
             Contact Us

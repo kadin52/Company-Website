@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/components/.SimpleSlider.tsx", "src/app/contact"  ],
+, "src/components/.SimpleSlider.tsx", "src/app/customer/contact", "src/app/customer/home"  ],
   "exclude": ["node_modules"]
 }

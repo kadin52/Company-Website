@@ -75,7 +75,9 @@ export default function LiveChat() {
   const scrollToBottom = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   };
-
+  const chatWidth = 500,
+    chatHeight = 600,
+    popUpMargin = 20;
   return (
     <>
       {/* Chat Window */}
@@ -84,11 +86,11 @@ export default function LiveChat() {
         <Rnd
           style={{ position: "fixed", zIndex: 70 }}
           default={{
-            x: window.innerWidth - 350,
-            y: window.innerHeight - 450,
+            x: window.innerWidth - chatWidth - popUpMargin,
+            y: window.innerHeight - chatHeight - popUpMargin,
 
-            width: 300,
-            height: 400,
+            width: chatWidth,
+            height: chatHeight,
           }}
           bounds="window"
           dragAxis="both"
@@ -96,10 +98,7 @@ export default function LiveChat() {
         >
           <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-2xl flex flex-col mb-4 overflow-hidden">
             <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
-              <span>
-                Lots Plumbing Support{" "}
-                <span className="text-gray-600 text-xs ">{`(resizable)`} </span>
-              </span>
+              <span>Lots Plumbing Support </span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:text-gray-200"

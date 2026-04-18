@@ -1,5 +1,5 @@
-import SimpleSlider from "../../components/SimpleSlider";
-import Card from "../../components/Card";
+import SimpleSlider from "../../../components/SimpleSlider";
+import Card from "../../../components/Card";
 import type { Metadata } from "next";
 import Image from "next/image";
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function Home() {
       <section className="flex flex-row flex-wrap justify-center items-center gap-10">
         <Card
           imageUrl="/assets/Plumbingservices.jpg"
-          learnMoreUrl="/services"
+          learnMoreUrl="/customer/services"
           title="Plumbing Services"
           description="We can help with clogged drains, leaking washing machines,
         sewage backups, fixture installations, water heater replacements, etc.
@@ -64,7 +64,7 @@ export default function Home() {
         ></Card>
         <Card
           imageUrl="/assets/copper-pex.jpg"
-          learnMoreUrl="/services#Copper & PEX Repipe"
+          learnMoreUrl="/customer/services#Copper & PEX Repipe"
           title="Copper & PEX Repipe"
           description="Our team of repipe specialists have nearly two decades of experience in Copper and PEX Repiping. Lots Plumbing has successfully replaced and installed many Copper and PEX repipe projects for residential and commercial structures in Southern California."
         ></Card>

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../../components/Sidebar";
 
-import YelpEmbed from "../../components/YelpEmbed";
+import YelpEmbed from "../../../components/YelpEmbed";
 
 const quoteButton = (
   <>
     <a
-      href="/contact"
+      href="/customer/contact"
       className="text-white bg-orange-600 hover:bg-orange-300 text-lg font-light p-4 text-center"
     >
       Request a Quote

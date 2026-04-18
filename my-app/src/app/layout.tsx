@@ -7,6 +7,8 @@ import LiveChat from "../components/LiveChat";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DisplayIfCustomer from "@/components/DisplayIfCustomer";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,9 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main className="pt-20 flex-1">{children}</main>
+        <DisplayIfCustomer>
+          <Navbar />
+        </DisplayIfCustomer>
 
+        <main className="pt-20 flex-1">{children}</main>
+        <DisplayIfCustomer>
+          <LiveChat />
+        </DisplayIfCustomer>
         <Footer />
         <LiveChat />
       </body>
