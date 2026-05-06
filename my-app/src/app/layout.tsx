@@ -7,7 +7,6 @@ import LiveChat from "../components/LiveChat";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ChooseNavbar from "@/components/ChooseNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ChooseNavbar>
-          <Navbar />
-        </ChooseNavbar>
-
         <main className="pt-20 flex-1">{children}</main>
-        <ChooseNavbar>
-          <LiveChat />
-        </ChooseNavbar>
-        <Footer />
-        <LiveChat />
       </body>
     </html>
   );
