@@ -14,7 +14,7 @@ export default function SupportLogin() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) router.push("/support/support-chat");
+      if (user) router.push("support-chat");
     });
     return () => unsubscribe();
   }, [auth, router]);
@@ -40,7 +40,7 @@ export default function SupportLogin() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("support/support-chat");
+      router.push("support-chat");
     } catch (err: any) {
       setError(err.message);
     } finally {
