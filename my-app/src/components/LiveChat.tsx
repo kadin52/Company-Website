@@ -33,8 +33,13 @@ export default function LiveChat() {
     setIsMounted(true);
 
     const registerSession = async () => {
-      await setDoc(doc(db, "chats", currentSession), { merge: true });
+      await setDoc(
+        doc(db, "chats", currentSession),
+        { createdAt: serverTimestamp() },
+        { merge: true },
+      );
     };
+    registerSession();
   }, []);
 
   useEffect(() => {
