@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { db } from "@/lib/firebase";
 import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
+
 type Message = {
   id: string;
   text?: string;
