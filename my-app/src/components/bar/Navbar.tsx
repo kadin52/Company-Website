@@ -39,7 +39,7 @@ export default function Navbar() {
           </Link>
         </div>
         <nav className="flex ml-auto justify-end items-stretch text-gray-700 text-nowrap text-sm font-bold">
-          <div className="group flex items-stretch relative">
+          <div className="group relative flex items-stretch">
             <Link
               href="/customer/services"
               className="flex px-5 items-center group-hover:bg-orange-600 group-hover:text-white"
@@ -49,13 +49,14 @@ export default function Navbar() {
                 ▾
               </span>
             </Link>
-            {/* <div className="absolute opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 ">
+
+            <div className="absolute flex flex-col group-hover:scale-y-100 rounded-sm p-3 mt-1 shadow-md scale-y-0 origin-top duration-200 top-full left-0">
               <Link href="/services#repipe">Copper & PEX Repipe</Link>
               <Link href="/#water-heater">Water Heater Installation</Link>
               <Link href="/#gas">Gas Line Installation & Repair</Link>
               <Link href="/#unclog-drain">Unclog Drain</Link>
               <Link href="/#=fixture">Water Heater Installation</Link>
-            </div> */}
+            </div>
           </div>
           <Link
             href="/customer/company"
