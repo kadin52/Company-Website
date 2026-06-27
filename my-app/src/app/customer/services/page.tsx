@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Sidebar from "../../../components/Sidebar";
+import Sidebar from "../../../components/bar/Sidebar";
 
 import YelpEmbed from "../../../components/YelpEmbed";
 
@@ -32,7 +32,7 @@ export default function Services() {
       </section>
 
       <div className="max-w-7xl mx-auto justify-center p-10">
-        <div className="flex flex-col lg:flex-row gap-10">
+        <div className="flex flex-col lg:flex-row gap-5">
           <aside className="">
             <Sidebar
               title="Our Services"
@@ -45,7 +45,7 @@ export default function Services() {
               ]}
             />
           </aside>
-          <div className="flex-1 flex flex-col flex-wrap">
+          <div className=" flex flex-col flex-wrap">
             <div className="text-left  text-xl font-light text-gray-600">
               <p>
                 At Lots Plumbing, we provide a focused array of repiping
@@ -59,7 +59,7 @@ export default function Services() {
             <div className="flex justify-center mx-auto w-full border-10 border-gray-300 max-w-2xl my-8 bg-gray-300">
               <YelpEmbed reviewId="qGl8N0okgZwYgk9X7mgEuw" />
             </div>
-            <section id="Copper & PEX Repipe" className="text-gray-600">
+            <section id="copper-pex-repipe" className="text-gray-600">
               <h2 className="font-bold text-3xl mb-10 mt-15">
                 Copper & PEX Repipe
               </h2>
@@ -125,7 +125,7 @@ export default function Services() {
                 <li>Increased property value</li>
               </ul>
             </section>
-            <section id="Water Heater Installation" className="text-gray-600">
+            <section id="water-heater-installation" className="text-gray-600">
               <h2 className="font-bold text-3xl mb-10 mt-15">
                 Water Heater Installation
               </h2>
@@ -206,7 +206,7 @@ export default function Services() {
                 segments.
               </p>
             </section>
-            <section id="Copper & PEX Repipe" className="text-gray-600">
+            <section id="unclog-drain" className="text-gray-600">
               <h2 className="font-bold text-3xl mb-10 mt-15">Unclog Drain </h2>
               <p className="text-xl font-light text-gray-600 mt-8">
                 Do you have a clogged drain that home remedies or Drain-O just
@@ -219,7 +219,10 @@ export default function Services() {
                 </span>{" "}
               </p>
             </section>
-            <section id="Copper & PEX Repipe" className="text-gray-600">
+            <section
+              id="fixture-replacement-installation"
+              className="text-gray-600"
+            >
               <h2 className="font-bold text-3xl mb-10 mt-15">
                 Fixture Replacement and Installation
               </h2>

@@ -1,4 +1,4 @@
-import SimpleSlider from "../../../components/SimpleSlider";
+import SimpleSlider from "@/components/slider/SimpleSlider";
 import Card from "../../../components/Card";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       <section className="max-w-7xl mx-auto text-center">
-        <h1 className="text-center font-bold text-4xl">
+        <h1 className="text-center font-bold text-4xl text-black">
           Orange County's #1 <br></br>Plumbing & Repipe Specialists
         </h1>
         <h2 className="text-center text-3xl p-8 font-light pb-16">
@@ -80,7 +80,7 @@ export default function Home() {
           className="object-contain border-2 border-gray-300 p-1 mr-20 "
         ></Image>
         <div>
-          <h1 className="text-center font-bold text-4xl py-12">
+          <h1 className="text-center font-bold text-4xl py-12 text-black">
             Why Choose Us?
           </h1>
           <ul>

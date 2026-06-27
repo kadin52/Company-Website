@@ -26,10 +26,10 @@ export default function Card({
             className="object-contain p-1"
           ></Image>
         </div>
-        <div className="p-4 border-2 border-gray-300 relative max-w-lg mb-8 text-center text-xl font-light">
+        <div className="p-4 border-2 text-black border-gray-300 relative max-w-lg mb-8 text-center text-xl font-light">
           <p>{title}</p>
         </div>
-        <div className="p-4 border-2 border-gray-300 relative max-w-lg mb-8 text-center text-sm text-gray-600">
+        <div className="p-4 border-2 border-gray-300 relative max-w-lg mb-8 text-center text-sm">
           <p>{description}</p>
         </div>
         <div className="text-center text-sm text-orange-600 underline">
