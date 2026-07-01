@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Dropdown from "@/components/bar/Dropdown";
 export default function Navbar() {
   const [shrink, setShrink] = useState(false);
 
@@ -50,20 +51,59 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <div className="absolute flex flex-col group-hover:scale-y-100 rounded-sm p-3 mt-1 shadow-md scale-y-0 origin-top duration-200 top-full left-0">
-              <Link href="/services#repipe">Copper & PEX Repipe</Link>
-              <Link href="/#water-heater">Water Heater Installation</Link>
-              <Link href="/#gas">Gas Line Installation & Repair</Link>
-              <Link href="/#unclog-drain">Unclog Drain</Link>
-              <Link href="/#=fixture">Water Heater Installation</Link>
-            </div>
+            <Dropdown
+              items={[
+                {
+                  label: "Copper & PEX Repipe",
+                  href: "/customer/services#copper-pex-repipe",
+                },
+                {
+                  label: "Water Heater Installation",
+                  href: "/customer/services#water-heater-installation",
+                },
+                {
+                  label: "Gas Line Installation & Repair",
+                  href: "/customer/services#gas-line-installation-repair",
+                },
+                {
+                  label: "Unclog Drain",
+                  href: "/customer/services#unclog-drain",
+                },
+                {
+                  label: "Fixture Installation & Repair",
+                  href: "/customer/services#fixture-replacement-installation",
+                },
+              ]}
+            />
           </div>
-          <Link
-            href="/customer/company"
-            className="flex px-5 items-center hover:text-white hover:bg-orange-600"
-          >
-            Company
-          </Link>
+          <div className="group relative flex items-stretch">
+            <Link
+              href="/customer/company"
+              className="flex px-5 items-center hover:text-white hover:bg-orange-600"
+            >
+              Company
+              <span className="transition-transform group-hover:rotate-180">
+                ▾
+              </span>
+            </Link>
+            <Dropdown
+              items={[
+                { label: "Who We Are", href: "/customer/company#who-we-are" },
+                {
+                  label: "Why Choose Us",
+                  href: "/customer/company#why-choose-us",
+                },
+                {
+                  label: "Our Mission & Values",
+                  href: "/customer/company#our-mission",
+                },
+                {
+                  label: "Our Company Culture",
+                  href: "/customer/company#our-company-culture",
+                },
+              ]}
+            />
+          </div>
           <Link
             href="/customer/contact"
             className="flex px-5 items-center hover:text-white  hover:bg-orange-600"
