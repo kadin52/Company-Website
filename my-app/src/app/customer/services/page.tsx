@@ -1,18 +1,8 @@
 import Image from "next/image";
 import Sidebar from "../../../components/bar/Sidebar";
 
-import YelpEmbed from "../../../components/YelpEmbed";
-
-const quoteButton = (
-  <>
-    <a
-      href="/customer/contact"
-      className="text-white bg-orange-600 hover:bg-orange-300 text-lg font-light p-4 text-center"
-    >
-      Request a Quote
-    </a>
-  </>
-);
+import YelpEmbed from "@/components/YelpEmbed";
+import QuoteButton from "@/components/button/QuoteButton";
 
 export default function Services() {
   return (
@@ -46,7 +36,7 @@ export default function Services() {
             />
           </aside>
           <div className=" flex flex-col flex-wrap">
-            <div className="text-left  text-xl font-light text-gray-600">
+            <div className="text-left  text-xl font-light ">
               <p>
                 At Lots Plumbing, we provide a focused array of repiping
                 services to help you solve your plumbing problems.{" "}
@@ -59,11 +49,11 @@ export default function Services() {
             <div className="flex justify-center mx-auto w-full border-10 border-gray-300 max-w-2xl my-8 bg-gray-300">
               <YelpEmbed reviewId="qGl8N0okgZwYgk9X7mgEuw" />
             </div>
-            <section id="copper-pex-repipe" className="text-gray-600">
-              <h2 className="font-bold text-3xl mb-10 mt-15">
+            <section id="copper-pex-repipe" className="">
+              <h2 className="font-bold text-black text-3xl mb-10 mt-15">
                 Copper & PEX Repipe
               </h2>
-              <p className="text-gray-600 ">
+              <p className=" ">
                 Our team of repipe specialists have nearly two decades of
                 experience in Copper and PEX Repiping. Lots Plumbing has
                 successfully replaced and installed{" "}
@@ -89,13 +79,13 @@ export default function Services() {
                     </li>
                     <li>Unusual high water bills?</li>
                   </ul>
-                  <p className="text-xl font-light text-gray-600 mt-8">
+                  <p className="text-xl font-light  mt-8">
                     Lots Plumbing can help! We offer both copper and PEX
                     repiping options. We are fast, reliable and very
                     cost-friendly!
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 items-center">
+                <div className="flex flex-col gap-4 items-start ">
                   <Image
                     src="/assets/pex-repipe.jpg"
                     alt="Pex"
@@ -103,7 +93,11 @@ export default function Services() {
                     height={800}
                     className="object-contain"
                   />
-                  {quoteButton}
+                  <span className="text-xl font-bold">
+                    Does your home or business need Copper or PEX Repiping?{" "}
+                  </span>
+
+                  <QuoteButton />
                 </div>
               </div>
 
@@ -125,11 +119,12 @@ export default function Services() {
                 <li>Increased property value</li>
               </ul>
             </section>
-            <section id="water-heater-installation" className="text-gray-600">
-              <h2 className="font-bold text-3xl mb-10 mt-15">
+
+            <section id="water-heater-installation" className="">
+              <h2 className="font-bold text-black  text-3xl mb-10 mt-15">
                 Water Heater Installation
               </h2>
-              <p className="text-xl font-light text-gray-600 mt-8">
+              <p className="text-xl font-light  mt-8">
                 Lots Plumbing provides our clients with the most professional
                 installation and repair for water heaters and tankless water
                 heaters of all makes and models. Our team is highly experienced;
@@ -139,7 +134,6 @@ export default function Services() {
               <h3 className="text-orange-600 font-bold text-xl mb-8 mt-8">
                 How do you know if your Water Heater needs to be replaced?
               </h3>
-
               <div className="flex flex-col sm:flex-row gap-8 justify-start">
                 <div>
                   <p>Some of the signs include the following:</p>
@@ -158,8 +152,7 @@ export default function Services() {
                     <li>Over-capacity</li>
                   </ul>
                 </div>
-
-                <div className="flex flex-col gap-4 items-center">
+                <div className="flex flex-col gap-4 items-start ">
                   <Image
                     src="/assets/water-heater-installation.jpg"
                     alt="Water Heater Installation"
@@ -167,24 +160,27 @@ export default function Services() {
                     height={450}
                     className="object-contain"
                   />
-                  {quoteButton}
+                  <span className="text-xl font-bold">
+                    Lots Plumbing is your best choice for water heater
+                    replacement.{" "}
+                  </span>
+
+                  <QuoteButton />
                 </div>
               </div>
-              <p className="mt-3">
+              <p className="mt-7">
                 At Lots Plumbing, we also offer Tankless Water Heater
                 Installation. Contact us and our specialists will visit your
                 property, assess your needs and the condition of your water
                 heater and provide you with the best price estimation.
               </p>
             </section>
-            <section
-              id="Gas Line Installation & Repair"
-              className="text-gray-600"
-            >
-              <h2 className="font-bold text-3xl mb-10 mt-15">
+
+            <section id="gas-line-installation-repair" className="">
+              <h2 className="font-bold text-black text-3xl mb-10 mt-15">
                 Gas Line Installation and Repair
               </h2>
-              <p className="text-xl font-light text-gray-600 mt-8">
+              <p className="text-xl font-light  mt-8">
                 Do you have a sulfur-like odor in your home? Sulfur is added to
                 natural gas to let you know when{" "}
                 <span className="text-orange-600">
@@ -205,10 +201,18 @@ export default function Services() {
                 main underground which last a long time and can be replaced in
                 segments.
               </p>
+              <div className="text-center mt-8">
+                <span className="text-xl font-bold">
+                  Need your gas pipes replaced or repaired?{" "}
+                </span>
+                <QuoteButton />
+              </div>
             </section>
-            <section id="unclog-drain" className="text-gray-600">
-              <h2 className="font-bold text-3xl mb-10 mt-15">Unclog Drain </h2>
-              <p className="text-xl font-light text-gray-600 mt-8">
+            <section id="unclog-drain" className="">
+              <h2 className="font-bold text-black text-3xl mb-10 mt-15">
+                Unclog Drain{" "}
+              </h2>
+              <p className="text-xl font-light  mt-8">
                 Do you have a clogged drain that home remedies or Drain-O just
                 won’t fix? A blocked drain is definitely an incovenience that
                 can lead to a waterlogged disaster in your home or business.
@@ -219,14 +223,11 @@ export default function Services() {
                 </span>{" "}
               </p>
             </section>
-            <section
-              id="fixture-replacement-installation"
-              className="text-gray-600"
-            >
-              <h2 className="font-bold text-3xl mb-10 mt-15">
+            <section id="fixture-replacement-installation" className="">
+              <h2 className="font-bold text-black text-3xl mb-10 mt-15">
                 Fixture Replacement and Installation
               </h2>
-              <p className="text-xl font-light text-gray-600 mt-8">
+              <p className="text-xl font-light  mt-8">
                 Planning the home renovation is the fun part. Actually having
                 your house torn up and getting the fixtures installed is the
                 not-so-fun part. Let Lots Plumbing make it better with our

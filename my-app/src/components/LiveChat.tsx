@@ -11,18 +11,46 @@ import {
   orderBy,
   serverTimestamp,
 } from "firebase/firestore";
+import { useMessages } from "@/hooks/useMessages";
+import { sendMessage } from "@/service/ChatService";
+// draggable/resizable component
 import { Rnd } from "react-rnd";
 
 export default function LiveChat() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<any[]>([]);
-  const [newMessage, setNewMessage] = useState("");
   const [sessionId, setSessionId] = useState("");
+  const { messages, scrollRef } = useMessages(sessionId, "customer");
+  const [newMessage, setNewMessage] = useState("");
 
   const [isMounted, setIsMounted] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [size, setSize] = useState({ width: 500, height: 600 });
 
-  // Listen to the database in real-time
+  const marginX = 30;
+  const marginY = 90;
+
+  const getResetPosition = () => {
+    const newX = Math.max(marginX, window.innerWidth - size.width - marginX);
+    const newY = Math.max(marginY, window.innerHeight - size.height - marginY);
+
+    return { x: newX, y: newY };
+  };
+
+  const openChat = () => {
+    const resetPosition = getResetPosition();
+    setPosition(resetPosition);
+    setIsOpen(true);
+  };
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!sessionId) return;
+    if (newMessage.trim() === "") return;
+
+    await sendMessage(sessionId, newMessage, "customer");
+  };
+
+  // Listen to the database
   useEffect(() => {
     let currentSession = localStorage.getItem("chat_session_id");
     if (!currentSession) {
@@ -43,65 +71,41 @@ export default function LiveChat() {
   }, []);
 
   useEffect(() => {
-    if (!isOpen || !sessionId) return;
-    const q = query(
-      collection(db, "chats", sessionId, "messages"),
-      orderBy("createdAt", "asc"),
-    );
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const fetchedMessages = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMessages(fetchedMessages);
-    });
+    const handleResize = () => {
+      //totalwindowlength - chatwidth - margin
 
-    return () => unsubscribe();
-  }, [isOpen, sessionId]);
+      const resetPosition = getResetPosition();
+      setIsOpen(false);
+      setPosition(resetPosition);
+    };
 
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [messages]);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [size]);
 
-  // Send a message to the database
-  const sendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newMessage.trim() === "") return;
-
-    await addDoc(collection(db, "chats", sessionId, "messages"), {
-      text: newMessage,
-      createdAt: serverTimestamp(),
-      user: "Customer",
-    });
-
-    setNewMessage("");
-  };
-
-  const scrollToBottom = () => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  };
-  const chatWidth = 500,
-    chatHeight = 600,
-    popUpMargin = 20;
   return (
     <>
       {/* Chat Window */}
-
       {isOpen && isMounted && (
         <Rnd
           style={{ position: "fixed", zIndex: 70 }}
-          default={{
-            x: window.innerWidth - chatWidth - popUpMargin,
-            y: window.innerHeight - chatHeight - popUpMargin,
-
-            width: chatWidth,
-            height: chatHeight,
+          size={{ width: size.width, height: size.height }}
+          position={{ x: position.x, y: position.y }}
+          onDragStop={(e, d) => {
+            setPosition({ x: d.x, y: d.y });
+          }}
+          onResizeStop={(e, direction, ref, delta, position) => {
+            setSize({
+              width: ref.offsetWidth,
+              height: ref.offsetHeight,
+            });
+            setPosition({ x: position.x, y: position.y });
           }}
           bounds="window"
           dragAxis="both"
           dragHandleClassName="chat-header"
         >
-          <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-2xl flex flex-col mb-4 overflow-hidden">
+          <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-2xl flex flex-col overflow-hidden">
             <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
               <span>Lots Plumbing Support </span>
               <button
@@ -123,7 +127,7 @@ export default function LiveChat() {
                   className="bg-orange-100 p-2 rounded-md text-sm w-fit max-w-[80%] self-end break-words"
                 >
                   <span className="font-bold text-xs text-orange-800 block ">
-                    {msg.user}
+                    {msg.role}
                   </span>
                   {msg.text}
                 </div>
@@ -131,7 +135,7 @@ export default function LiveChat() {
               <div ref={scrollRef} />
             </div>
             <form
-              onSubmit={sendMessage}
+              onSubmit={handleSendMessage}
               className="p-3 border-t border-gray-200 bg-white flex gap-2"
             >
               <input
@@ -156,7 +160,7 @@ export default function LiveChat() {
         {/* Floating Toggle Button */}
         {!isOpen && (
           <button
-            onClick={() => setIsOpen(true)}
+            onClick={openChat}
             className="bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition flex items-center justify-center"
           >
             <svg

@@ -15,7 +15,7 @@ export default function ChatList(props: {
       q,
       (snapshot) => {
         const fetchedChats = snapshot.docs.map((doc) => {
-          return { id: doc.id };
+          return { id: doc.id, read: false };
         });
         setChats(fetchedChats);
       },

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { db, auth } from "../../../lib/firebase";
 
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
@@ -51,13 +52,15 @@ export default function SupportLogin() {
   return (
     <section className=" min-h-[65vh] w-full flex items-start justify-center ">
       <div
-        className=" bg-radial-[at_50%_75%]
-       from-indigo-200 via-indigo-50 to-indigo-300 to-90% 
+        // bg-radial-[at_50%_75%] from-indigo-200 via-indigo-50 to-indigo-300 to-90%
+        className="bg-gray-300
        flex flex-col justify-center items-center shadow-lg max-w-3xl py-15 px-30 border-3 "
       >
         <div className="justify-center items-center flex-col flex mb-10">
-          <h2 className="font-bold text-5xl text-orange-600 mb-5">Sign In</h2>
-          <svg
+          <h2 className="font-bold text-5xl text-orange-600 mt-2 mb-5">
+            Sign In
+          </h2>
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -70,7 +73,8 @@ export default function SupportLogin() {
               strokeLinejoin="round"
               d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
             />
-          </svg>
+          </svg> */}
+          <Image src="/assets/logo.png" alt="Logo" width={100} height={100} />
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col ">
