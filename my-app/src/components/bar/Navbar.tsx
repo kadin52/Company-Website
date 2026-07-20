@@ -39,7 +39,7 @@ export default function Navbar() {
             ></Image>
           </Link>
         </div>
-        <nav className="flex ml-auto justify-end items-stretch text-gray-700 text-nowrap text-sm font-bold">
+        <nav className="flex ml-auto justify-end items-stretch my-8 text-gray-700 text-nowrap text-sm font-bold">
           <div className="group relative flex items-stretch">
             <Link
               href="/customer/services"
@@ -110,7 +110,7 @@ export default function Navbar() {
           >
             Contact Us
           </Link>
-          <span className="text-orange-600 text-2xl mx-5 my-8 font-bold">
+          <span className="hidden md:inline text-orange-600 text-2xl mx-5  font-bold">
             {" "}
             Call (888) 888-1403
           </span>
