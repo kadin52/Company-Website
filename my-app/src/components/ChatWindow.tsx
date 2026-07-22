@@ -51,7 +51,7 @@ export default function ChatWindow({
     <>
       <div className={`flex h-full w-full min-h-0 flex-col ${className ?? ""}`}>
         <div className={`flex flex-1 min-h-0 gap-2 px-4 py-3`}>
-          <MessageScrollerProvider>
+          <MessageScrollerProvider autoScroll>
             <MessageScroller>
               <MessageScrollerViewport>
                 <MessageScrollerContent>
@@ -62,13 +62,15 @@ export default function ChatWindow({
                       className="flex flex-col"
                     >
                       <div
-                        className={`p-2 rounded-xl mb-2 font-semibold text-black ${
+                        className={`p-2 rounded-xl mb-2 text-black max-w-3/4 wrap-anywhere ${
                           msg.role === role
                             ? "bg-orange-300 self-end ml-auto"
                             : "bg-blue-300 self-start mr-auto"
                         }`}
                       >
-                        <span className="block text-xs font-bold text-orange-800 md:text-base">
+                        <span
+                          className={`block text-xs font-bold text-orange-800 md:text-base ${msg.role === role ? "" : ""}`}
+                        >
                           {msg.role}
                         </span>
                         {msg.text}
@@ -80,21 +82,6 @@ export default function ChatWindow({
               <MessageScrollerButton className="" />
             </MessageScroller>
           </MessageScrollerProvider>
-          {/* {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`p-2 rounded-xl mb-2 font-semibold text-black ${
-                msg.role === role
-                  ? "bg-orange-300 self-end ml-auto"
-                  : "bg-blue-300 self-start mr-auto"
-              }`}
-            >
-              <span className="block text-xs font-bold text-orange-800 md:text-base">
-                {msg.role}
-              </span>
-              {msg.text}
-            </div>
-          ))} */}
         </div>
         <form
           onSubmit={handleSendMessage}
@@ -103,12 +90,15 @@ export default function ChatWindow({
           <Textarea
             placeholder="Enter your message"
             rows={1}
+            disabled={!sessionId}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="min-h-10 max-h-32 field-sizing-fixed resize-none overflow-y-auto"
+            className="min-h-16 max-h-32 field-sizing-fixed resize-none overflow-y-auto ring-1 ring-gray-400"
           />
+
           <button
             type="submit"
+            disabled={!sessionId || text.trim() === ""}
             className="bg-orange-600 text-white px-3 py-1 rounded text-sm font-bold hover:bg-orange-700 transition"
           >
             Send
