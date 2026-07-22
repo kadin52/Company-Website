@@ -70,16 +70,16 @@ export default function Home() {
         ></Card>
       </section>
 
-      <section className="flex flex-row max-w-7xl mx-auto mt-25 justify-center items-center">
+      <section className="flex flex-col md:flex-row max-w-7xl mx-auto mt-25 gap-10 justify-center items-center lg:flex-row">
         <Image
           src="/assets/owner.jpg"
           alt="Owner"
           width={300}
           height={300}
           unoptimized={true}
-          className="object-contain border-2 border-gray-300 p-1 mr-20 "
+          className="object-contain border-2 border-gray-300 p-1  "
         ></Image>
-        <div>
+        <div className="px-5">
           <h1 className="text-center font-bold text-4xl py-12 text-black">
             Why Choose Us?
           </h1>

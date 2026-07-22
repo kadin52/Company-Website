@@ -20,7 +20,7 @@ export default function Company() {
 
       <div className=" max-w-7xl mx-auto p-10">
         <div className="flex flex-col lg:flex-row gap-5">
-          <aside className="pt-15">
+          <aside className="pt-15 flex-1">
             <Sidebar
               title="Our Company"
               items={[
