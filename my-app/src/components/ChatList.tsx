@@ -28,7 +28,7 @@ export default function ChatList(props: {
 
   return (
     <>
-      <div>
+      <div className="overflow-y-auto">
         {chats.map((chat) => (
           <button
             key={chat.id}
