@@ -1,26 +1,13 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { db } from "../lib/firebase";
-import {
-  collection,
-  addDoc,
-  doc,
-  setDoc,
-  onSnapshot,
-  query,
-  orderBy,
-  serverTimestamp,
-} from "firebase/firestore";
-import { useMessages } from "@/hooks/useMessages";
-import { sendMessage } from "@/service/ChatService";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import ChatWindow from "@/components/ChatWindow";
 // draggable/resizable component
 import { Rnd } from "react-rnd";
 
 export default function LiveChat() {
   const [sessionId, setSessionId] = useState("");
-  const { messages, scrollRef } = useMessages(sessionId, "customer");
-  const [newMessage, setNewMessage] = useState("");
-
   const [isMounted, setIsMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -30,8 +17,13 @@ export default function LiveChat() {
   const marginY = 90;
 
   const getResetPosition = () => {
-    const newX = Math.max(marginX, window.innerWidth - size.width - marginX);
-    const newY = Math.max(marginY, window.innerHeight - size.height - marginY);
+    const width = Math.min(size.width, window.innerWidth - 2 * marginX);
+    const height = Math.min(size.height, window.innerHeight - 2 * marginY);
+
+    const newX = window.innerWidth - width - marginX;
+    const newY = window.innerHeight - height - marginY;
+
+    setSize({ width, height });
 
     return { x: newX, y: newY };
   };
@@ -40,14 +32,6 @@ export default function LiveChat() {
     const resetPosition = getResetPosition();
     setPosition(resetPosition);
     setIsOpen(true);
-  };
-
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!sessionId) return;
-    if (newMessage.trim() === "") return;
-
-    await sendMessage(sessionId, newMessage, "customer");
   };
 
   // Listen to the database
@@ -87,73 +71,45 @@ export default function LiveChat() {
     <>
       {/* Chat Window */}
       {isOpen && isMounted && (
-        <Rnd
-          style={{ position: "fixed", zIndex: 70 }}
-          size={{ width: size.width, height: size.height }}
-          position={{ x: position.x, y: position.y }}
-          onDragStop={(e, d) => {
-            setPosition({ x: d.x, y: d.y });
-          }}
-          onResizeStop={(e, direction, ref, delta, position) => {
-            setSize({
-              width: ref.offsetWidth,
-              height: ref.offsetHeight,
-            });
-            setPosition({ x: position.x, y: position.y });
-          }}
-          bounds="window"
-          dragAxis="both"
-          dragHandleClassName="chat-header"
-        >
-          <div className="h-full w-full bg-gray-300 border border-gray-300 rounded-lg shadow-2xl flex flex-col overflow-hidden">
-            <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
-              <span>Lots Plumbing Support </span>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:text-gray-200"
-              >
-                ✕
-              </button>
-            </div>
-            <div className="flex-1 p-3 overflow-y-auto flex flex-col gap-2 bg-gray-300">
-              {messages.length === 0 && (
-                <p className="text-gray-400 text-sm text-center mt-4">
-                  Send a message to start chatting!
-                </p>
-              )}
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className="bg-orange-100 p-2 rounded-md text-sm w-fit max-w-[80%] self-end break-words"
+        <div className="fixed inset-0 z-70">
+          <Rnd
+            // style={{ position: "fixed", zIndex: 70 }}
+            size={{ width: size.width, height: size.height }}
+            minWidth={Math.min(300, window.innerWidth - marginX)}
+            minHeight={Math.min(350, window.innerHeight - marginY)}
+            position={{ x: position.x, y: position.y }}
+            cancel=".chat-close-button"
+            onDragStop={(e, d) => {
+              setPosition({ x: d.x, y: d.y });
+            }}
+            onResizeStop={(e, direction, ref, delta, position) => {
+              setSize({
+                width: ref.offsetWidth,
+                height: ref.offsetHeight,
+              });
+              setPosition({ x: position.x, y: position.y });
+            }}
+            bounds="parent"
+            dragAxis="both"
+            dragHandleClassName="chat-header"
+          >
+            <div className="flex-col h-full w-full bg-gray-300 ring ring-gray-400 rounded-lg shadow-2xl flex overflow-hidden">
+              <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
+                <span aria-hidden="true" className="text-lg leading-none">
+                  ⠿
+                </span>
+                <span>Lots Plumbing (resizable)</span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="chat-close-button text-white hover:text-gray-200"
                 >
-                  <span className="font-bold text-xs text-orange-800 block ">
-                    {msg.role}
-                  </span>
-                  {msg.text}
-                </div>
-              ))}
-              <div ref={scrollRef} />
+                  ✕
+                </button>
+              </div>
+              <ChatWindow sessionId={sessionId} role="customer" />
             </div>
-            <form
-              onSubmit={handleSendMessage}
-              className="p-3 border-t border-gray-200 bg-white flex gap-2"
-            >
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type a message..."
-                className="flex-1 border border-gray-300 rounded px-2 py-1 text-sm outline-none focus:border-orange-600"
-              />
-              <button
-                type="submit"
-                className="bg-orange-600 text-white px-3 py-1 rounded text-sm font-bold hover:bg-orange-700 transition"
-              >
-                Send
-              </button>
-            </form>
-          </div>
-        </Rnd>
+          </Rnd>
+        </div>
       )}
 
       <div className="fixed bottom-6 right-6 z-50">
