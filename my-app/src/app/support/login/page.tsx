@@ -2,9 +2,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { db, auth } from "../../../lib/firebase";
+import { auth } from "../../../lib/firebase";
 
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 export default function SupportLogin() {
   const [email, setEmail] = useState("");
@@ -13,12 +17,12 @@ export default function SupportLogin() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) router.push("support-chat");
-    });
-    return () => unsubscribe();
-  }, [auth, router]);
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, async (user) => {
+  //     if (!user) return;
+  //   });
+  //   return () => unsubscribe();
+  // }, [router]);
 
   const validatedForm = () => {
     if (!email || !password) {
@@ -36,14 +40,16 @@ export default function SupportLogin() {
     const inputError = validatedForm();
     if (inputError) {
       setError(inputError);
+      return;
     }
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.push("support-chat");
-    } catch (err: any) {
-      setError(err.message);
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+
+      router.replace("/support/support-chat");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Unable to sign in.");
     } finally {
       setLoading(false);
     }
@@ -104,6 +110,11 @@ export default function SupportLogin() {
           >
             Continue
           </button>
+          {error && (
+            <p className="mt-4 text-sm text-center text-red-700" role="alert">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </section>

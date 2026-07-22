@@ -19,16 +19,16 @@ export default function SupportChat() {
 
   return (
     <>
-      <div className="flex max-w-7xl mx-auto">
-        <div className="w-1/4 border-orange-300 border-4">
+      <div className="mt-10 flex max-w-7xl mx-auto">
+        <div className="w-1/4 max-h-[75vh] overflow-y-auto border-orange-300 border-4">
           <ChatList
             selectedChat={selectedChat}
             onChatSelect={setSelectedChat}
           />
           <p>test</p>
         </div>
-        <div>
-          <ChatWindow selectedChat={selectedChat} />
+        <div className="w-3/4 bg-gray-300 h-[75vh]">
+          <ChatWindow sessionId={selectedChat} role="support" />
         </div>
       </div>
     </>
