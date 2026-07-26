@@ -38,7 +38,7 @@ export default function LiveChat() {
   useEffect(() => {
     let currentSession = localStorage.getItem("chat_session_id");
     if (!currentSession) {
-      currentSession = Math.random().toString(36);
+      currentSession = crypto.randomUUID();
       localStorage.setItem("chat_session_id", currentSession);
     }
     setSessionId(currentSession);
@@ -71,7 +71,7 @@ export default function LiveChat() {
     <>
       {/* Chat Window */}
       {isOpen && isMounted && (
-        <div className="fixed inset-0 z-70">
+        <div className="fixed inset-0 z-70 pointer-events-none">
           <Rnd
             // style={{ position: "fixed", zIndex: 70 }}
             size={{ width: size.width, height: size.height }}
@@ -92,6 +92,7 @@ export default function LiveChat() {
             bounds="parent"
             dragAxis="both"
             dragHandleClassName="chat-header"
+            className="pointer-events-auto"
           >
             <div className="flex-col h-full w-full bg-gray-300 ring ring-gray-400 rounded-lg shadow-2xl flex overflow-hidden">
               <div className="chat-header bg-orange-600 text-white p-3 font-bold flex justify-between items-center cursor-move">
