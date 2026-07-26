@@ -39,7 +39,7 @@ export default function Navbar() {
             ></Image>
           </Link>
         </div>
-        <nav className="flex ml-auto justify-end items-stretch my-8 text-gray-700 text-nowrap text-sm font-bold">
+        <nav className="flex ml-auto justify-end items-stretch  text-gray-700 text-nowrap text-sm font-bold">
           <div className="group relative flex items-stretch">
             <Link
               href="/customer/services"
@@ -79,7 +79,7 @@ export default function Navbar() {
           <div className="group relative flex items-stretch">
             <Link
               href="/customer/company"
-              className="flex px-5 items-center hover:text-white hover:bg-orange-600"
+              className="flex px-5 items-center py-8 hover:text-white hover:bg-orange-600"
             >
               Company
               <span className="transition-transform group-hover:rotate-180">
@@ -110,10 +110,10 @@ export default function Navbar() {
           >
             Contact Us
           </Link>
-          <span className="hidden md:inline text-orange-600 text-2xl mx-5  font-bold">
+          <div className="hidden md:inline py-8 text-orange-600 text-2xl mx-5  font-bold">
             {" "}
             Call (888) 888-1403
-          </span>
+          </div>
         </nav>
       </header>
     </div>
