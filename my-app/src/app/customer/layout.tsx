@@ -9,7 +9,6 @@ export default function CustomerLayout(props: { children: React.ReactNode }) {
       <main>{props.children}</main>
 
       <Footer />
-      <LiveChat />
     </div>
   );
 }
