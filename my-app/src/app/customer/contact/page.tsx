@@ -1,6 +1,8 @@
 "use client";
+import LiveChat from "@/components/LiveChat";
 import Image from "next/image";
 import { useState } from "react";
+
 export default function Contact() {
   const [status, setStatus] = useState("idle");
   const [success, setSuccess] = useState(false);
@@ -37,7 +39,6 @@ export default function Contact() {
       if (response.ok) {
         setStatus("success");
         setSuccess(true);
-        e.target.reset();
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -46,6 +47,7 @@ export default function Contact() {
 
   return (
     <>
+      <LiveChat />
       <section className="relative w-full h-[220px] z-10 mb-20">
         <Image
           src="/assets/custom-header-contact-up.jpg"
