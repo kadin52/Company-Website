@@ -27,7 +27,6 @@ export default function SupportChat() {
             selectedChat={selectedChat}
             onChatSelect={setSelectedChat}
           />
-          <p>test</p>
         </div>
 
         <div className="relative w-3/4 h-[75vh] bg-1">
