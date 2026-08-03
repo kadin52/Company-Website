@@ -2,6 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 import { db } from "../lib/firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import {
+  listenToCustomerUnread,
+  markChatReadByCustomer,
+} from "@/service/ChatService";
 import ChatWindow from "@/components/ChatWindow";
 // draggable/resizable component
 import { Rnd } from "react-rnd";
@@ -12,6 +16,8 @@ export default function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 500, height: 600 });
+  const [hasUnread, setHasUnread] = useState(false);
+  const [available, setAvailable] = useState(false);
 
   const marginX = 30;
   const marginY = 90;
@@ -28,10 +34,14 @@ export default function LiveChat() {
     return { x: newX, y: newY };
   };
 
-  const openChat = () => {
+  const openChat = async () => {
     const resetPosition = getResetPosition();
     setPosition(resetPosition);
     setIsOpen(true);
+
+    if (sessionId) {
+      await markChatReadByCustomer(sessionId);
+    }
   };
 
   // Listen to the database
@@ -53,6 +63,12 @@ export default function LiveChat() {
     };
     registerSession();
   }, []);
+
+  useEffect(() => {
+    if (!sessionId) return;
+
+    return listenToCustomerUnread(sessionId, setHasUnread);
+  }, [sessionId]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -107,7 +123,20 @@ export default function LiveChat() {
                   ✕
                 </button>
               </div>
-              <ChatWindow sessionId={sessionId} role="customer" />
+              {available ? (
+                <ChatWindow sessionId={sessionId} role="customer" />
+              ) : (
+                <div className="flex flex-1 flex-col items-center justify-center bg-white p-8 text-center">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Live support is currently unavailable
+                  </h3>
+
+                  <p className="mt-3 max-w-sm text-gray-600">
+                    Please leave us a message through the contact form, and we
+                    will respond as soon as possible.
+                  </p>
+                </div>
+              )}
             </div>
           </Rnd>
         </div>
@@ -118,8 +147,14 @@ export default function LiveChat() {
         {!isOpen && (
           <button
             onClick={openChat}
-            className="bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition flex items-center justify-center"
+            className="relative bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition flex items-center justify-center"
           >
+            {hasUnread && (
+              <span
+                aria-label="Unread support message"
+                className="absolute right-1 top-1 h-4 w-4 rounded-full bg-blue-500 ring-2 ring-white"
+              />
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
