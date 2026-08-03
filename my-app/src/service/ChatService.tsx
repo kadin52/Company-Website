@@ -1,10 +1,13 @@
 import {
+  doc,
   collection,
   onSnapshot,
   orderBy,
   query,
   addDoc,
   serverTimestamp,
+  writeBatch,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Message } from "@/types/Message";
@@ -37,10 +40,60 @@ export const sendMessage = async (
   const trimmedText = text.trim();
   if (trimmedText === "") return;
   if (!sessionId) return;
-  await addDoc(collection(db, "chats", sessionId, "messages"), {
+
+  const chatRef = doc(db, "chats", sessionId);
+  const messageRef = doc(collection(chatRef, "messages"));
+
+  const batch = writeBatch(db);
+
+  batch.set(messageRef, {
     text: trimmedText,
     createdAt: serverTimestamp(),
-    role: role,
-    ...(senderId ? { senderId: senderId } : {}),
+    role,
+    ...(senderId ? { senderId } : {}),
+  });
+
+  batch.set(
+    chatRef,
+    {
+      lastMessage: trimmedText,
+      lastMessageAt: serverTimestamp(),
+      ...(role === "support"
+        ? { customerHasRead: false }
+        : { supportHasRead: false }),
+    },
+
+    { merge: true },
+  );
+
+  await batch.commit();
+};
+
+export const listenToCustomerUnread = (
+  sessionId: string,
+  onUnreadChange: (hasUnread: boolean) => void,
+) => {
+  const chatRef = doc(db, "chats", sessionId);
+
+  return onSnapshot(chatRef, (snapshot) => {
+    const chat = snapshot.data();
+
+    onUnreadChange(chat?.customerHasRead === false);
+  });
+};
+
+export const markChatReadBySupport = async (sessionId: string) => {
+  const chatRef = doc(db, "chats", sessionId);
+
+  await updateDoc(chatRef, {
+    supportHasRead: true,
+  });
+};
+
+export const markChatReadByCustomer = async (sessionId: string) => {
+  const chatRef = doc(db, "chats", sessionId);
+
+  await updateDoc(chatRef, {
+    customerHasRead: true,
   });
 };
