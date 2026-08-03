@@ -14,11 +14,13 @@ import {
   MessageScrollerViewport,
   MessageScrollerItem,
 } from "@/components/ui/message-scroller";
+
 type ChatWindowProps = {
   sessionId: string | null;
   role: "customer" | "support";
   className?: string;
 };
+
 export default function ChatWindow({
   sessionId,
   role,
@@ -50,7 +52,7 @@ export default function ChatWindow({
   return (
     <>
       <div className={`flex h-full w-full min-h-0 flex-col ${className ?? ""}`}>
-        <div className={`flex flex-1 min-h-0 gap-2 px-4 py-3`}>
+        <div className={`flex flex-1 min-h-0 gap-2 px-4 py-3 bg-gray-300`}>
           <MessageScrollerProvider autoScroll>
             <MessageScroller>
               <MessageScrollerViewport>
