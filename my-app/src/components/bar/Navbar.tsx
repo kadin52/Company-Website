@@ -1,10 +1,63 @@
 "use client";
+
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Dropdown from "@/components/bar/Dropdown";
+
+const serviceItems = [
+  {
+    label: "Copper & PEX Repipe",
+    href: "/customer/services#copper-pex-repipe",
+  },
+  {
+    label: "Water Heater Installation",
+    href: "/customer/services#water-heater-installation",
+  },
+  {
+    label: "Gas Line Installation & Repair",
+    href: "/customer/services#gas-line-installation-repair",
+  },
+  {
+    label: "Unclog Drain",
+    href: "/customer/services#unclog-drain",
+  },
+  {
+    label: "Fixture Installation & Repair",
+    href: "/customer/services#fixture-replacement-installation",
+  },
+];
+
+const companyItems = [
+  {
+    label: "Who We Are",
+    href: "/customer/company#who-we-are",
+  },
+  {
+    label: "Why Choose Us",
+    href: "/customer/company#why-choose-us",
+  },
+  {
+    label: "Our Mission & Values",
+    href: "/customer/company#our-mission",
+  },
+  {
+    label: "Our Company Culture",
+    href: "/customer/company#our-company-culture",
+  },
+];
+
 export default function Navbar() {
   const [shrink, setShrink] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<
+    "services" | "company" | null
+  >(null);
+
+  const logoSize = shrink
+    ? { width: 100, height: 100 }
+    : { width: 170, height: 170 };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,36 +67,145 @@ export default function Navbar() {
         setShrink(false);
       }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const logoSize = shrink
-    ? { width: 100, height: 100 }
-    : { width: 170, height: 170 };
   return (
-    <div className="fixed bg-white border-b inset-x-0 top-0 z-50">
-      <header className="container relative mx-auto flex items-stretch justify-between z-50 max-w-7xl overflow-visible">
+    <div
+      id="site-navbar"
+      className="fixed inset-x-0 top-0 z-100 border-b bg-white"
+    >
+      <header className="relative mx-auto flex h-20 max-w-7xl items-stretch justify-between overflow-visible md:px-5">
         <div
-          className="absolute mr-auto top-0 ease-in-out duration-300"
-          style={{ width: logoSize.width, height: logoSize.height }}
+          className="absolute top-0 mr-auto h-16 transition duration-300 ease-in-out"
+          style={{
+            width: logoSize.width,
+            height: logoSize.height,
+          }}
         >
-          <Link href="/" className="block w-full h-full relative">
+          <Link href="/" className="relative block h-full w-full">
             <Image
               src="/assets/logo.png"
               alt="Logo"
               fill
               className="object-contain"
               quality={100}
-              unoptimized={true}
-            ></Image>
+              unoptimized
+            />
           </Link>
         </div>
-        <nav className="flex ml-auto justify-end items-stretch  text-gray-700 text-nowrap text-sm font-bold">
+
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          className="ml-auto rounded-md p-2 text-gray-700 hover:bg-gray-100 md:hidden"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="h-10 w-7"
+            aria-hidden="true"
+          >
+            {menuOpen ? (
+              <path d="M6 6l12 12M18 6L6 18" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Mobile navigation */}
+        {menuOpen && (
+          <nav className="absolute inset-x-0 top-full flex flex-col border-t bg-white p-4 font-bold text-orange-600 shadow-md md:hidden">
+            <button
+              type="button"
+              className="flex w-full items-center px-3 py-3 text-left"
+              aria-expanded={mobileDropdownOpen === "services"}
+              onClick={() =>
+                setMobileDropdownOpen((current) =>
+                  current === "services" ? null : "services",
+                )
+              }
+            >
+              Services
+              <span
+                className={`ml-auto transition-transform ${
+                  mobileDropdownOpen === "services" ? "rotate-180" : ""
+                }`}
+              >
+                ▾
+              </span>
+            </button>
+
+            {mobileDropdownOpen === "services" && (
+              <div
+                onClick={() => {
+                  setMobileDropdownOpen(null);
+                  setMenuOpen(false);
+                }}
+              >
+                <Dropdown items={serviceItems} mobile />
+              </div>
+            )}
+
+            <button
+              type="button"
+              className="flex w-full items-center px-3 py-3 text-left"
+              aria-expanded={mobileDropdownOpen === "company"}
+              onClick={() =>
+                setMobileDropdownOpen((current) =>
+                  current === "company" ? null : "company",
+                )
+              }
+            >
+              Company
+              <span
+                className={`ml-auto transition-transform ${
+                  mobileDropdownOpen === "company" ? "rotate-180" : ""
+                }`}
+              >
+                ▾
+              </span>
+            </button>
+
+            {mobileDropdownOpen === "company" && (
+              <div
+                onClick={() => {
+                  setMobileDropdownOpen(null);
+                  setMenuOpen(false);
+                }}
+              >
+                <Dropdown items={companyItems} mobile />
+              </div>
+            )}
+
+            <Link
+              href="/customer/contact"
+              className="px-3 py-3"
+              onClick={() => {
+                setMobileDropdownOpen(null);
+                setMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </Link>
+          </nav>
+        )}
+
+        {/* Desktop navigation */}
+        <nav className="ml-auto hidden items-stretch justify-end text-nowrap text-sm font-bold text-gray-700 md:flex">
           <div className="group relative flex items-stretch">
             <Link
               href="/customer/services"
-              className="flex px-5 items-center group-hover:bg-orange-600 group-hover:text-white"
+              className="flex items-center px-5 group-hover:bg-orange-600 group-hover:text-white"
             >
               Services
               <span className="transition-transform group-hover:rotate-180">
@@ -51,67 +213,31 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <Dropdown
-              items={[
-                {
-                  label: "Copper & PEX Repipe",
-                  href: "/customer/services#copper-pex-repipe",
-                },
-                {
-                  label: "Water Heater Installation",
-                  href: "/customer/services#water-heater-installation",
-                },
-                {
-                  label: "Gas Line Installation & Repair",
-                  href: "/customer/services#gas-line-installation-repair",
-                },
-                {
-                  label: "Unclog Drain",
-                  href: "/customer/services#unclog-drain",
-                },
-                {
-                  label: "Fixture Installation & Repair",
-                  href: "/customer/services#fixture-replacement-installation",
-                },
-              ]}
-            />
+            <Dropdown items={serviceItems} />
           </div>
+
           <div className="group relative flex items-stretch">
             <Link
               href="/customer/company"
-              className="flex px-5 items-center py-8 hover:text-white hover:bg-orange-600"
+              className="flex items-center px-5 py-8 hover:bg-orange-600 hover:text-white"
             >
               Company
               <span className="transition-transform group-hover:rotate-180">
                 ▾
               </span>
             </Link>
-            <Dropdown
-              items={[
-                { label: "Who We Are", href: "/customer/company#who-we-are" },
-                {
-                  label: "Why Choose Us",
-                  href: "/customer/company#why-choose-us",
-                },
-                {
-                  label: "Our Mission & Values",
-                  href: "/customer/company#our-mission",
-                },
-                {
-                  label: "Our Company Culture",
-                  href: "/customer/company#our-company-culture",
-                },
-              ]}
-            />
+
+            <Dropdown items={companyItems} />
           </div>
+
           <Link
             href="/customer/contact"
-            className="flex px-5 items-center hover:text-white  hover:bg-orange-600"
+            className="flex items-center px-5 hover:bg-orange-600 hover:text-white"
           >
             Contact Us
           </Link>
-          <div className="hidden md:inline py-8 text-orange-600 text-2xl mx-5  font-bold">
-            {" "}
+
+          <div className="mx-5 hidden py-8 text-2xl font-bold text-orange-600 md:inline">
             Call (888) 888-1403
           </div>
         </nav>

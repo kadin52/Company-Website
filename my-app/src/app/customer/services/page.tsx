@@ -202,9 +202,9 @@ export default function Services() {
                 segments.
               </p>
               <div className="text-center mt-8">
-                <span className="text-xl font-bold">
+                <p className="text-xl font-bold mb-5">
                   Need your gas pipes replaced or repaired?{" "}
-                </span>
+                </p>
                 <QuoteButton />
               </div>
             </section>

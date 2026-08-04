@@ -14,8 +14,8 @@ export default function Card({
 }: CardProps) {
   return (
     <>
-      <div className="flex-col relative ">
-        <div className="border-2 border-gray-300 w-lg overflow-hidden relative mb-8">
+      <div className="flex flex-col relative ">
+        <div className="flex border-2 border-gray-300 w-xs md:w-lg max-w-lg overflow-hidden mx-auto relative mb-8">
           <Image
             src={imageUrl}
             alt={title}

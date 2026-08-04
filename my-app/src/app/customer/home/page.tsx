@@ -38,7 +38,7 @@ const reasons = [
 export default function Home() {
   return (
     <>
-      <section className="slider-area">
+      <section className="slider-area relative overflow-hidden">
         <SimpleSlider />
       </section>
 
@@ -85,11 +85,11 @@ export default function Home() {
           </h1>
           <ul>
             {reasons.map((item, index) => (
-              <li key={index} className="mb-4">
+              <li key={index} className="mb-4 text-justify">
                 <span className="text-md text-orange-600 font-bold">
                   {item.title}{" "}
                 </span>
-                <span className="text-md text-gray-600">{item.text}</span>
+                <span className="text-md text-gray-600 ">{item.text}</span>
               </li>
             ))}
           </ul>

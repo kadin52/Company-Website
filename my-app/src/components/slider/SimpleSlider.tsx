@@ -20,7 +20,7 @@ export default function SimpleSlider() {
     <div className="slider-container pb-5 relative">
       <Slider {...settings}>
         {carouselImages.map((img, i) => (
-          <div key={i} className="relative w-full h-[400px] z-10">
+          <div key={i} className="relative h-50 w-full md:h-100">
             <Image
               src={img.src}
               alt={img.alt}
