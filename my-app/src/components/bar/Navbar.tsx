@@ -237,7 +237,7 @@ export default function Navbar() {
             Contact Us
           </Link>
 
-          <div className="mx-5 hidden py-8 text-2xl font-bold text-orange-600 md:inline">
+          <div className="mx-5 hidden my-auto text-2xl font-bold text-orange-600 md:inline">
             Call (888) 888-1403
           </div>
         </nav>
