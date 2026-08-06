@@ -27,11 +27,26 @@ export default function Services() {
             <Sidebar
               title="Our Services"
               items={[
-                "Copper & PEX Repipe",
-                "Water Heater Installation",
-                "Gas Line Installation & Repair",
-                "Unclog Drain",
-                "Fixture Installation",
+                {
+                  title: "Copper & PEX Repipe",
+                  id: "copper-pex-repipe",
+                },
+                {
+                  title: "Water Heater Installation",
+                  id: "water-heater-installation",
+                },
+                {
+                  title: "Gas Line Installation & Repair",
+                  id: "gas-line-installation-repair",
+                },
+                {
+                  title: "Unclog Drain",
+                  id: "unclog-drain",
+                },
+                {
+                  title: "Fixture Installation",
+                  id: "fixture-replacement-installation",
+                },
               ]}
             />
           </aside>

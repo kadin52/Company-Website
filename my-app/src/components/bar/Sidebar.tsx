@@ -1,7 +1,13 @@
 import Link from "next/link";
+
+type SidebarItem = {
+  title: string;
+  id: string;
+};
+
 type SidebarProps = {
   title?: string;
-  items: string[];
+  items: SidebarItem[];
 };
 export default function Sidebar({ title, items = [] }: SidebarProps) {
   return (
@@ -11,14 +17,14 @@ export default function Sidebar({ title, items = [] }: SidebarProps) {
           <h4 className="text-gray-600 font-semibold text-2xl mb-4">{title}</h4>
         )}
         <ul className="relative justify-left text-nowrap text-sm">
-          {items.map((id) => (
-            <li key={id} className="">
+          {items.map((item) => (
+            <li key={item.id} className="">
               <a
-                href={`#${id}`}
+                href={`#${item.id}`}
                 className="flex text-gray-600 rounded-none hover:text-orange-600 py-3 hover:bg-gray-100 border-b border-gray-300"
               >
                 {`▸ `}
-                {id}
+                {item.title}
               </a>
             </li>
           ))}

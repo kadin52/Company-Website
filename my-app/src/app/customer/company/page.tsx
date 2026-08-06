@@ -24,14 +24,26 @@ export default function Company() {
             <Sidebar
               title="Our Company"
               items={[
-                "Who We Are",
-                "Why Choose Us",
-                "Our Mission & Values",
-                "Our Company Culture",
+                {
+                  title: "Who We Are",
+                  id: "who-we-are",
+                },
+                {
+                  title: "Why Choose Us",
+                  id: "why-choose-us",
+                },
+                {
+                  title: "Our Mission & Values",
+                  id: "our-mission",
+                },
+                {
+                  title: "Our Company Culture",
+                  id: "our-company-culture",
+                },
               ]}
             />
           </aside>
-          <div>
+          <div className="flex flex-col">
             <section id="who-we-are" className="default-text-color">
               <h2 className="font-bold text-black text-3xl mb-10 mt-15">
                 Who We Are
