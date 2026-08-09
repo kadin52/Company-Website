@@ -7,19 +7,34 @@ const nextConfig: NextConfig = {
   },
    async redirects() {
     return [
-      {
+     {
         source: "/contact.html",
-        destination: "/customer/contact",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/customer/contact",
+        destination: "/contact",
         permanent: true,
       },
       {
         source: "/services.html",
-        destination: "/customer/services",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/customer/services",
+        destination: "/services",
         permanent: true,
       },
       {
         source: "/company.html",
-        destination: "/customer/company",
+        destination: "/company",
+        permanent: true,
+      },
+      {
+        source: "/customer/company",
+        destination: "/company",
         permanent: true,
       },
       {
@@ -27,17 +42,20 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/customer/home",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
   
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        destination: "/customer/home"
-      }
-    ]
-  }
+
 };
 
 export default nextConfig;

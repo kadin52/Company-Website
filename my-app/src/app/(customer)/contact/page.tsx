@@ -138,6 +138,7 @@ function InputInfo({
           className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
         />
       </div>
+
       <p className="mt-1 hidden text-sm text-red-500 group-has-[:invalid]:block">
         Please enter a valid {name}.
       </p>

@@ -39,7 +39,7 @@ export default function LiveChat() {
     setPosition(resetPosition);
     setIsOpen(true);
 
-    if (sessionId) {
+    if (sessionId && hasUnread) {
       await markChatReadByCustomer(sessionId);
     }
   };
@@ -53,15 +53,6 @@ export default function LiveChat() {
     }
     setSessionId(currentSession);
     setIsMounted(true);
-
-    const registerSession = async () => {
-      await setDoc(
-        doc(db, "chats", currentSession),
-        { createdAt: serverTimestamp() },
-        { merge: true },
-      );
-    };
-    registerSession();
   }, []);
 
   useEffect(() => {

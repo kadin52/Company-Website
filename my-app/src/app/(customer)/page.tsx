@@ -1,5 +1,5 @@
 import SimpleSlider from "@/components/slider/SimpleSlider";
-import Card from "../../../components/Card";
+import Card from "@/components/Card";
 import type { Metadata } from "next";
 import Image from "next/image";
 export const metadata: Metadata = {
