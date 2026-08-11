@@ -2,9 +2,11 @@ import SimpleSlider from "@/components/slider/SimpleSlider";
 import Card from "@/components/Card";
 import type { Metadata } from "next";
 import Image from "next/image";
+
 export const metadata: Metadata = {
-  title: "Lots Plumbing, Inc. | Home",
-  description: "PEX Repipe, HVAC, Heating and Air Conditioning...",
+  title: "Orange County Plumber & Repipe Specialists | Lots Plumbing",
+  description:
+    "Lots Plumbing provides professional plumbing, Copper and PEX repiping, water heater, drain, gas line, and fixture services throughout Orange County.",
   keywords: ["plumbing", "repipe", "orange county"],
 };
 
@@ -80,9 +82,9 @@ export default function Home() {
           className="object-contain border-2 border-gray-300 p-1  "
         ></Image>
         <div className="px-5">
-          <h1 className="text-center font-bold text-4xl py-12 text-black">
+          <h2 className="text-center font-bold text-4xl py-12 text-black">
             Why Choose Us?
-          </h1>
+          </h2>
           <ul>
             {reasons.map((item, index) => (
               <li key={index} className="mb-4 text-justify">
