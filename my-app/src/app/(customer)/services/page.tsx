@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Services() {
   return (
     <>
-      <section className="relative w-full h-[220px] z-10 mb-20">
+      <section className="relative w-full h-55 z-10 mb-20">
         <Image
           src="/assets/custom-header-services-up.jpg"
           alt="Services Header"

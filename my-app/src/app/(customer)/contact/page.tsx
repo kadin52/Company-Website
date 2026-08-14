@@ -1,6 +1,14 @@
 import LiveChat from "@/components/LiveChat";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Lots Plumbing | Orange County Plumber",
+  description:
+    "Contact Lots Plumbing for professional plumbing and repiping services in Orange County. Request service or an estimate today.",
+};
+
 export default function Contact() {
   return (
     <>
