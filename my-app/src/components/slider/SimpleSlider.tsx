@@ -25,6 +25,8 @@ export default function SimpleSlider() {
               src={img.src}
               alt={img.alt}
               fill
+              sizes="100vw"
+              preload={i === 0}
               className="object-cover object-bottom "
             />
           </div>

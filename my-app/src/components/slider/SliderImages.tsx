@@ -1,14 +1,14 @@
 export const carouselImages = [
   {
-    src: "/assets/slider-3.jpg",
-    alt: "slider3",
+    src: "/assets/copper-pex-plumbing.jpg",
+    alt: "Copper plumbing with red and blue PEX water lines",
   },
   {
-    src: "/assets/slider-4.jpg",
-    alt: "slider4",
+    src: "/assets/commercial-piping.jpg",
+    alt: "Commercial piping and ventilation system",
   },
   {
-    src: "/assets/slider-5.jpg",
-    alt: "slider5",
+    src: "/assets/air-conditioning-condenser.jpg",
+    alt: "Outdoor air-conditioning condenser fan",
   },
 ];
