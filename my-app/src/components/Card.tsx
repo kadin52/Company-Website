@@ -21,8 +21,8 @@ export default function Card({
             alt={title}
             width={800}
             height={600}
-            quality={100}
-            unoptimized={true}
+            // quality={100}
+            // unoptimized={true}
             className="object-contain p-1"
           ></Image>
         </div>

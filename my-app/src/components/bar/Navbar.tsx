@@ -57,7 +57,7 @@ export default function Navbar() {
 
   const logoSize = shrink
     ? { width: 100, height: 100 }
-    : { width: 170, height: 170 };
+    : { width: 150, height: 150 };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,7 +122,7 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Mobile navigation */}
+        {/* Mobile*/}
         {menuOpen && (
           <nav className="absolute inset-x-0 top-full flex flex-col border-t bg-white p-4 font-bold text-orange-600 shadow-md md:hidden">
             <button
@@ -200,7 +200,7 @@ export default function Navbar() {
           </nav>
         )}
 
-        {/* Desktop navigation */}
+        {/* Desktop*/}
         <nav className="ml-auto hidden items-stretch justify-end text-nowrap text-sm font-bold text-gray-700 md:flex">
           <div className="group relative flex items-stretch">
             <Link

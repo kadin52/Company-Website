@@ -1,8 +1,15 @@
 import Image from "next/image";
-import Sidebar from "../../../components/bar/Sidebar";
+import Sidebar from "@/components/bar/Sidebar";
 
 import YelpEmbed from "@/components/YelpEmbed";
 import QuoteButton from "@/components/button/QuoteButton";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Plumbing & Repipe Services in Orange County | Lots Plumbing",
+  description:
+    "Explore Copper and PEX repiping, water heater, gas line, drain, and fixture services from Lots Plumbing in Orange County.",
+};
 
 export default function Services() {
   return (
