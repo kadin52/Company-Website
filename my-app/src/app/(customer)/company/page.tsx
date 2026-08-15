@@ -2,7 +2,7 @@ import Sidebar from "@/components/bar/Sidebar";
 import Image from "next/image";
 import type { Metadata } from "next";
 
-export const metadatda: Metadata = {
+export const metadada: Metadata = {
   title: "About Lots Plumbing | Orange County Repipe Specialists",
   description:
     "Learn about Lots Plumbing, a licensed, bonded, and insured Orange County plumbing company with over 20 years of plumbing and repiping experience.",
