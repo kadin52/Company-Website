@@ -32,8 +32,11 @@ export default function Contact() {
           Request for Information
         </h2>
         <p className="text-2xl font-light mt-5">
-          Let us know how we can help! Send us a message or give us a call (888)
-          888-1403 .
+          Let us know how we can help! Send us a message or give us a call{" "}
+          <a href="tel:+18888881403" className="text-orange-600">
+            (888) 888-1403
+          </a>
+          .
         </p>
         <ContactForm />
       </div>

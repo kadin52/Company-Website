@@ -238,7 +238,9 @@ export default function Navbar() {
           </Link>
 
           <div className="mx-5 hidden my-auto text-2xl font-bold text-orange-600 md:inline">
-            Call (888) 888-1403
+            <a href="tel:+18888881403" className="text-orange-600">
+              Call (888) 888-1403
+            </a>
           </div>
         </nav>
       </header>

@@ -16,6 +16,7 @@ export default function Company() {
           src="/assets/custom-header-maintenance.jpg"
           alt="Company Header"
           fill
+          sizes="100vw"
           className="object-cover object-middle"
         />
         <div className="relative h-full max-w-7xl mx-auto my-auto z-20 ">
