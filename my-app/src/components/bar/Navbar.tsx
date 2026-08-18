@@ -8,42 +8,42 @@ import Dropdown from "@/components/bar/Dropdown";
 const serviceItems = [
   {
     label: "Copper & PEX Repipe",
-    href: "/customer/services#copper-pex-repipe",
+    href: "/services#copper-pex-repipe",
   },
   {
     label: "Water Heater Installation",
-    href: "/customer/services#water-heater-installation",
+    href: "/services#water-heater-installation",
   },
   {
     label: "Gas Line Installation & Repair",
-    href: "/customer/services#gas-line-installation-repair",
+    href: "/services#gas-line-installation-repair",
   },
   {
     label: "Unclog Drain",
-    href: "/customer/services#unclog-drain",
+    href: "/services#unclog-drain",
   },
   {
     label: "Fixture Installation & Repair",
-    href: "/customer/services#fixture-replacement-installation",
+    href: "/services#fixture-replacement-installation",
   },
 ];
 
 const companyItems = [
   {
     label: "Who We Are",
-    href: "/customer/company#who-we-are",
+    href: "/company#who-we-are",
   },
   {
     label: "Why Choose Us",
-    href: "/customer/company#why-choose-us",
+    href: "/company#why-choose-us",
   },
   {
     label: "Our Mission & Values",
-    href: "/customer/company#our-mission",
+    href: "/company#our-mission",
   },
   {
     label: "Our Company Culture",
-    href: "/customer/company#our-company-culture",
+    href: "/company#our-company-culture",
   },
 ];
 
@@ -188,7 +188,7 @@ export default function Navbar() {
             )}
 
             <Link
-              href="/customer/contact"
+              href="/contact"
               className="px-3 py-3"
               onClick={() => {
                 setMobileDropdownOpen(null);
@@ -204,7 +204,7 @@ export default function Navbar() {
         <nav className="ml-auto hidden items-stretch justify-end text-nowrap text-sm font-bold text-gray-700 md:flex">
           <div className="group relative flex items-stretch">
             <Link
-              href="/customer/services"
+              href="/services"
               className="flex items-center px-5 group-hover:bg-orange-600 group-hover:text-white"
             >
               Services
@@ -218,7 +218,7 @@ export default function Navbar() {
 
           <div className="group relative flex items-stretch">
             <Link
-              href="/customer/company"
+              href="/company"
               className="flex items-center px-5 py-8 hover:bg-orange-600 hover:text-white"
             >
               Company
@@ -231,7 +231,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/customer/contact"
+            href="/contact"
             className="flex items-center px-5 hover:bg-orange-600 hover:text-white"
           >
             Contact Us
