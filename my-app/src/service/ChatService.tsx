@@ -8,6 +8,7 @@ import {
   serverTimestamp,
   writeBatch,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Message } from "@/types/Message";
@@ -95,5 +96,25 @@ export const markChatReadByCustomer = async (sessionId: string) => {
 
   await updateDoc(chatRef, {
     customerHasRead: true,
+  });
+};
+
+export const listenToLiveChatAvailability = (
+  onAvailabilityChange: (available: boolean) => void,
+) => {
+  const liveChatRef = doc(db, "settings", "liveChat");
+
+  return onSnapshot(liveChatRef, (snapshot) => {
+    const settings = snapshot.data();
+    onAvailabilityChange(settings?.available === true);
+  });
+};
+
+export const setLiveChatAvailability = async (availability: boolean) => {
+  const liveChatRef = doc(db, "settings", "liveChat");
+
+  await setDoc(liveChatRef, {
+    available: availability,
+    updatedAt: serverTimestamp(),
   });
 };

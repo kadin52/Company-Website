@@ -1,14 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { db } from "@/lib/firebase";
-import {
-  collection,
-  query,
-  onSnapshot,
-  orderBy,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import ChatAvailabilityToggle from "@/components/button/ChatAvailabilityToggle";
 
 import ChatList from "@/components/ChatList";
 import ChatWindow from "@/components/ChatWindow";
@@ -23,6 +15,7 @@ export default function SupportChat() {
     <>
       <div className="mt-10 flex max-w-7xl mx-auto px-10">
         <div className="w-1/4 max-h-[75vh] overflow-y-auto border-orange-300 border-4">
+          <ChatAvailabilityToggle />
           <ChatList
             selectedChat={selectedChat}
             onChatSelect={setSelectedChat}

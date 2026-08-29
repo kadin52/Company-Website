@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { db } from "@/lib/firebase";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import {
+  listenToLiveChatAvailability,
   listenToCustomerUnread,
   markChatReadByCustomer,
 } from "@/service/ChatService";
@@ -44,8 +43,8 @@ export default function LiveChat() {
     }
   };
 
-  // Listen to the database
   useEffect(() => {
+    // Listen to the database
     let currentSession = localStorage.getItem("chat_session_id");
     if (!currentSession) {
       currentSession = crypto.randomUUID();
@@ -53,6 +52,10 @@ export default function LiveChat() {
     }
     setSessionId(currentSession);
     setIsMounted(true);
+
+    // Listen to live chat availability
+    const unsubscribe = listenToLiveChatAvailability(setAvailable);
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
