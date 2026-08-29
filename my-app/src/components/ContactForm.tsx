@@ -16,6 +16,7 @@ export default function ContactForm() {
       email: String(data.get("email") ?? ""),
       phone: String(data.get("phone") ?? ""),
       message: String(data.get("message") ?? ""),
+      _honey: String(data.get("_honey") ?? ""),
       _subject: "Contact Form Submission",
     };
 
@@ -40,6 +41,7 @@ export default function ContactForm() {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      setStatus("error");
     }
   }
   return (
@@ -64,10 +66,11 @@ export default function ContactForm() {
                 id="message"
                 name="message"
                 placeholder="Message"
-                className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6 items-start field-sizing h-[200px]"
+                className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6 items-start field-sizing h-50"
               />
             </div>
           </div>
+          <input type="text" name="_honey" style={{ display: "none" }}></input>
           <div className="mt-6">
             <button
               type="submit"
@@ -109,11 +112,13 @@ function FormInput({
           name={name}
           type={type}
           placeholder={placeholder}
+          required={required}
+          pattern={pattern}
           className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
         />
       </div>
 
-      <p className="mt-1 hidden text-sm text-red-500 group-has-invalid:block">
+      <p className="mt-1 hidden text-sm text-red-500 group-has-user-invalid:block">
         Please enter a valid {name}.
       </p>
     </div>
