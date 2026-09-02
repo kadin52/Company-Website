@@ -6,7 +6,7 @@ import QuoteButton from "@/components/button/QuoteButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Plumbing & Repipe Services in Orange County | Lots Plumbing",
+  title: "Plumbing & Repiping Services in Orange County | Lots Plumbing",
   description:
     "Explore Copper and PEX repiping, water heater, gas line, drain, and fixture services from Lots Plumbing in Orange County.",
 };

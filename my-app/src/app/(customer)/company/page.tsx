@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadada: Metadata = {
-  title: "About Lots Plumbing | Orange County Repipe Specialists",
+  title: "About Us | Lots Plumbing",
   description:
     "Learn about Lots Plumbing, a licensed, bonded, and insured Orange County plumbing company with over 20 years of plumbing and repiping experience.",
 };

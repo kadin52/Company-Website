@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Orange County Plumber & Repipe Specialists | Lots Plumbing",
+  title: "Orange County Plumbing & Repiping | Lots Plumbing",
   description:
     "Lots Plumbing provides professional plumbing, Copper and PEX repiping, water heater, drain, gas line, and fixture services throughout Orange County.",
   keywords: ["plumbing", "repipe", "orange county"],
@@ -37,9 +37,23 @@ const reasons = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Lots Plumbing",
+  alternateName: ["Lots Plumbing Inc.", "lotsplumbing.com"],
+  url: "https://lotsplumbing.com/",
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="slider-area relative overflow-hidden">
         <SimpleSlider />
       </section>
@@ -57,7 +71,7 @@ export default function Home() {
       <section className="flex flex-row flex-wrap justify-center items-center gap-10">
         <Card
           imageUrl="/assets/Plumbingservices.jpg"
-          learnMoreUrl="/customer/services"
+          learnMoreUrl="/services"
           title="Plumbing Services"
           description="We can help with clogged drains, leaking washing machines,
         sewage backups, fixture installations, water heater replacements, etc.
@@ -66,7 +80,7 @@ export default function Home() {
         ></Card>
         <Card
           imageUrl="/assets/copper-pex.jpg"
-          learnMoreUrl="/customer/services#Copper & PEX Repipe"
+          learnMoreUrl="/services#Copper & PEX Repipe"
           title="Copper & PEX Repipe"
           description="Our team of repipe specialists have nearly two decades of experience in Copper and PEX Repiping. Lots Plumbing has successfully replaced and installed many Copper and PEX repipe projects for residential and commercial structures in Southern California."
         ></Card>
