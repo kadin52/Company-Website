@@ -3,8 +3,10 @@ import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Dropdown from "@/components/bar/Dropdown";
+import Dropdown from "@/components/navigation/Dropdown";
 import { Button } from "@/components/ui/button";
+// import GoogleBadge from "@/components/review/badge/GoogleBadge";
+
 const serviceItems = [
   {
     label: "Copper & PEX Repipe",
@@ -50,7 +52,6 @@ const companyItems = [
 export default function Navbar() {
   const [shrink, setShrink] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<
     "services" | "company" | null
   >(null);
@@ -80,7 +81,7 @@ export default function Navbar() {
     >
       <header className="relative mx-auto flex h-20 max-w-7xl items-stretch justify-between overflow-visible md:px-5">
         <div
-          className="absolute top-0 mr-auto h-16 transition duration-300 ease-in-out"
+          className={`absolute top-0 mr-auto h-16 transition duration-300 ease-in-out $`}
           style={{
             width: logoSize.width,
             height: logoSize.height,
@@ -99,12 +100,12 @@ export default function Navbar() {
         </div>
         <div className="flex h-full items-center">
           <div
-            className="shrink-0 transition-all duration-50"
+            className={`shrink-0 transition-all duration-50 ${shrink ? "md:w-10" : "md:w-16"}`}
             style={{ width: logoSize.width }}
             aria-hidden="true"
           />
 
-          <div className="block">
+          <div className="block flex-col">
             <div
               className="elfsight-app-d65e3e64-ad0a-4ea9-8a67-3210435771b5"
               data-elfsight-app-lazy
@@ -113,10 +114,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex ml-auto md:hidden gap-10 items-center">
+        <div className="flex ml-auto gap-2 sm:gap-6 md:hidden items-center whitespace-nowrap">
           <a
             href="tel:+18888881403"
-            className="relative flex items-center justify-center rounded-lg
+            className="relative hidden min-[500px]:flex items-center justify-center rounded-lg
              bg-orange-500 px-4 py-3 text-center text-md font-bold
              leading-tight text-white"
           >
@@ -140,7 +141,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="rounded-md p-2 text-gray-700 hover:bg-gray-100 "
+            className="shrink-0 rounded-md p-2 text-gray-700 hover:bg-gray-100 "
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
