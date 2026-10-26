@@ -1,5 +1,5 @@
 import SupportAuth from "@/lib/auth";
-import SupportNavbar from "@/components/bar/SupportNavbar";
+import SupportNavbar from "@/components/navigation/SupportNavbar";
 export default function SupportLayout({
   children,
 }: {
