@@ -65,7 +65,7 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 name="message"
-                placeholder="Message"
+                placeholder="What can we help you with?"
                 className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-gray-600 placeholder:text-gray-500 focus:outline-none sm:text-sm/6 items-start field-sizing h-50"
               />
             </div>

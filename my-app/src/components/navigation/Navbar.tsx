@@ -1,9 +1,11 @@
 "use client";
-
+import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Dropdown from "@/components/bar/Dropdown";
+import Dropdown from "@/components/navigation/Dropdown";
+import { Button } from "@/components/ui/button";
+// import GoogleBadge from "@/components/review/badge/GoogleBadge";
 
 const serviceItems = [
   {
@@ -50,7 +52,6 @@ const companyItems = [
 export default function Navbar() {
   const [shrink, setShrink] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<
     "services" | "company" | null
   >(null);
@@ -80,7 +81,7 @@ export default function Navbar() {
     >
       <header className="relative mx-auto flex h-20 max-w-7xl items-stretch justify-between overflow-visible md:px-5">
         <div
-          className="absolute top-0 mr-auto h-16 transition duration-300 ease-in-out"
+          className={`absolute top-0 mr-auto h-16 transition duration-300 ease-in-out $`}
           style={{
             width: logoSize.width,
             height: logoSize.height,
@@ -97,32 +98,72 @@ export default function Navbar() {
             />
           </Link>
         </div>
+        <div className="flex h-full items-center">
+          <div
+            className={`shrink-0 transition-all duration-50 ${shrink ? "md:w-10" : "md:w-16"}`}
+            style={{ width: logoSize.width }}
+            aria-hidden="true"
+          />
+
+          <div className="block flex-col">
+            <div
+              className="elfsight-app-d65e3e64-ad0a-4ea9-8a67-3210435771b5"
+              data-elfsight-app-lazy
+            />
+          </div>
+        </div>
 
         {/* Mobile menu button */}
-        <button
-          type="button"
-          className="ml-auto rounded-md p-2 text-gray-700 hover:bg-gray-100 md:hidden"
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="h-10 w-7"
-            aria-hidden="true"
+        <div className="flex ml-auto gap-2 sm:gap-6 md:hidden items-center whitespace-nowrap">
+          <a
+            href="tel:+18888881403"
+            className="relative hidden min-[500px]:flex items-center justify-center rounded-lg
+             bg-orange-500 px-4 py-3 text-center text-md font-bold
+             leading-tight text-white"
           >
-            {menuOpen ? (
-              <path d="M6 6l12 12M18 6L6 18" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 absolute left-2 top-3 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+              />
+            </svg>
+            Call Now <br />
+            (888) 888-1403
+          </a>
 
-        {/* Mobile*/}
+          <button
+            type="button"
+            className="shrink-0 rounded-md p-2 text-gray-700 hover:bg-gray-100 "
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="h-10 w-7"
+              aria-hidden="true"
+            >
+              {menuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Dropdown*/}
         {menuOpen && (
           <nav className="absolute inset-x-0 top-full flex flex-col border-t bg-white p-4 font-bold text-orange-600 shadow-md md:hidden">
             <button
@@ -238,8 +279,28 @@ export default function Navbar() {
           </Link>
 
           <div className="mx-5 hidden my-auto text-2xl font-bold text-orange-600 md:inline">
-            <a href="tel:+18888881403" className="text-orange-600">
-              Call (888) 888-1403
+            <a
+              href="tel:+18888881403"
+              className="relative flex items-center justify-center rounded-lg
+             bg-orange-500 px-4 py-1 text-center text-md font-bold
+             leading-tight text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6 absolute left-4 top-3 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                />
+              </svg>
+              Call Now <br />
+              (888) 888-1403
             </a>
           </div>
         </nav>

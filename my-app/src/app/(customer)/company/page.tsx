@@ -1,4 +1,4 @@
-import Sidebar from "@/components/bar/Sidebar";
+import Sidebar from "@/components/navigation/Sidebar";
 import Image from "next/image";
 import type { Metadata } from "next";
 

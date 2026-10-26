@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Sidebar from "@/components/bar/Sidebar";
+import Sidebar from "@/components/navigation/Sidebar";
 
 import YelpEmbed from "@/components/YelpEmbed";
 import QuoteButton from "@/components/button/QuoteButton";

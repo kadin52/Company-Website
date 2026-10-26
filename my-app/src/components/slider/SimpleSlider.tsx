@@ -27,6 +27,7 @@ export default function SimpleSlider() {
               fill
               sizes="100vw"
               preload={i === 0}
+              fetchPriority={i === 0 ? "high" : "auto"}
               className="object-cover object-bottom "
             />
           </div>
