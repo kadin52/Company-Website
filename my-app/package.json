@@ -12,6 +12,7 @@
     "@base-ui/react": "^1.6.0",
     "@popperjs/core": "^2.11.8",
     "@shadcn/react": "^0.2.1",
+    "@vercel/analytics": "^2.0.1",
     "bootstrap": "^5.3.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

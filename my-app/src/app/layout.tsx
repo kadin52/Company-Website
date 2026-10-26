@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${openSans.className} antialiased`}>
         <main className="pt-20 flex-1">{children}</main>
+        <Analytics />
       </body>
     </html>
   );
